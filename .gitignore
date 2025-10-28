@@ -10,12 +10,13 @@ logs/
 tmp/
 temp/
 
-# 文档不上传
-*.md
-*.pdf
-*.html
 
-# doc资料下的文件需上传
-!doc/*.md
-!doc/*.pdf
-!doc/*.html
+# 忽略 docs 目录下所有的 .md 文件（包括所有子目录，暂不区分）
+docs/**/*.md
+docs/**/*.pdf
+docs/**/*.html
+
+# 否定规则：保留 docs/doc 目录及所有子目录下的 .md 文件
+!**/doc/*.md
+!**/doc/*.pdf
+!**/doc/*.html
