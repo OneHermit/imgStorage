@@ -1,0 +1,16 @@
+# 操作系统临时文件
+.DS_Store       # Mac
+Thumbs.db       # Windows
+
+# 日志文件
+*.log
+logs/
+
+# 临时目录
+tmp/
+temp/
+
+# 文档不上传
+*.md
+*.pdf
+*.html
