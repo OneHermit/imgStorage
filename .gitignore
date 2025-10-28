@@ -16,6 +16,6 @@ temp/
 *.html
 
 # doc资料下的文件需上传
-!doc/**/*.md
-!doc/**/*.pdf
-!doc/**/*.html
+!doc/*.md
+!doc/*.pdf
+!doc/*.html
