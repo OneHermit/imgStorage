@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选项卡</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+      .bar {
+        display: flex;
+        width: 200px;
+      }
+
+      .bar li {
+        flex-grow: 1;
+        text-align: center;
+        border: 1px solid #dbdbdb;
+        cursor: pointer;
+      }
+
+      .content {
+        border: 1px solid #dbdbdb;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="bar">
+      <li class="li1">手机</li>
+      <li class="li2">电脑</li>
+      <li class="li3">平板</li>
+    </ul>
+    <div class="content">我选中了...</div>
+    <script>
+      let li1 = document.querySelector(".li1");
+      let li2 = document.querySelector(".li2");
+      let li3 = document.querySelector(".li3");
+      let content = document.querySelector(".content");
+
+      li1.addEventListener("click", function () {
+        content.innerHTML = "我选中了手机";
+      });
+
+      li2.addEventListener("click", function () {
+        content.innerHTML = "我选中了电脑";
+      });
+
+      li3.addEventListener("click", function () {
+        content.innerHTML = "我选中了平板";
+      });
+    </script>
+  </body>
+</html>

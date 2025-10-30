@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+
+      .head {
+        display: flex;
+        width: 800px;
+      }
+      .head > div {
+        border: 1px solid #dbdbdb;
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      .head img {
+        width: 80px;
+      }
+
+      .skill {
+        display: flex;
+        width: 800px;
+      }
+
+      .skill > div {
+        border: 1px solid #dbdbdb;
+        flex-grow: 1;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .skill img {
+        width: 50px;
+        cursor: pointer;
+      }
+
+      .log {
+        margin: 20px;
+        width: 400px;
+        height: 400px;
+        background-color: #000;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="head">
+      <div><img src="./images/hanxin_head.jpg" alt="" /></div>
+      <div><img src="./images/huamulan_head.jpg" alt="" /></div>
+    </div>
+    <div class="skill">
+      <div class="hanxin">
+        <img
+          class="hanxin_skill1"
+          id=""
+          src="./images/hanxin_skill1.png"
+          alt=""
+          data-num="1"
+        />
+        <img
+          class="hanxin_skill2"
+          id=""
+          src="./images/hanxin_skill2.png"
+          alt=""
+          data-num="2"
+        />
+        <img
+          class="hanxin_skill3"
+          id=""
+          src="./images/hanxin_skill3.png"
+          alt=""
+          data-num="3"
+        />
+      </div>
+      <div class="huamulan">
+        <img
+          class="huamulan_skill1"
+          src="./images/huamulan_skill1.png"
+          alt=""
+          data-num="1"
+        />
+        <img
+          class="huamulan_skill2"
+          src="./images/huamulan_skill2.png"
+          alt=""
+          data-num="2"
+        />
+        <img
+          class="huamulan_skill3"
+          src="./images/huamulan_skill3.png"
+          alt=""
+          data-num="3"
+        />
+      </div>
+    </div>
+    <div class="log"></div>
+
+    <script>
+      let obj = {
+        hanxin_skill1: "<p>韩信释放了1技能</p>",
+        hanxin_skill2: "<p>韩信释放了2技能</p>",
+        hanxin_skill3: "<p>韩信释放了3技能</p>",
+        huamulan_skill1: "<p>花木兰释放了1技能</p>",
+        huamulan_skill2: "<p>花木兰释放了2技能</p>",
+        huamulan_skill3: "<p>花木兰释放了3技能</p>",
+      };
+
+      let logDom = document.querySelector(".log");
+      let ImgList = document.querySelectorAll(".skill img");
+      ImgList.forEach(function (imgDom) {
+        imgDom.addEventListener("click", function () {
+          logDom.innerHTML += obj[imgDom.className];
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .head {
+        line-height: 55px;
+        height: 55px;
+        position: relative;
+      }
+      .head img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .head .head-box {
+        display: inline-block;
+        height: 55px;
+      }
+
+      .head .left {
+        position: absolute;
+        top: 0;
+        left: 100px;
+      }
+
+      .head .right {
+        position: absolute;
+        top: 0;
+        right: 100px;
+      }
+
+      .head-box div {
+        display: inline-block;
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .left div {
+        margin-right: 40px;
+      }
+      .right div {
+        margin-left: 40px;
+      }
+
+      .bg-img {
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+      .suspend {
+        width: 160px;
+        height: 320px;
+        position: fixed;
+        right: 0;
+        top: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="head">
+      <img src="./head.jpg" alt="" />
+      <div class="head-box left">
+        <div>微博</div>
+        <div>b站</div>
+        <div>公众号</div>
+        <div>大神</div>
+        <div>友人帐</div>
+      </div>
+      <div class="head-box right">
+        <div>网易支付中心</div>
+        <div>mumu模拟器下载</div>
+        <div>手机端官服下载</div>
+        <div>进入官网</div>
+      </div>
+    </div>
+    <div class="suspend">
+      <img src="./suspend.png" alt="" width="100%" height="100%" />
+    </div>
+    <img
+      class="bg-img"
+      src="./bg.jpg"
+      alt=""
+      width="100%"
+      height="100%"
+    />
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人简介</title>
+</head>
+
+<body>
+  <!-- 关于我部分 -->
+  <h2>关于我</h2>
+  <img src="./头像.jpeg" width="100px" alt="个人照片">
+  <p>你好！我是<strong>张明</strong>，一名充满热情的<em>前端开发学习者</em>。</p>
+  <p>我热爱技术，喜欢探索新知识，并致力于创建用户友好的网页体验。</p>
+  <hr>
+  <!-- 教育背景部分 -->
+  <h2>教育背景</h2>
+  <table border="1">
+    <tr>
+      <th>时间</th>
+      <th>学校</th>
+      <th>专业</th>
+      <th>学历</th>
+    </tr>
+    <tr>
+      <td>2018-2022</td>
+      <td>XX大学</td>
+      <td>计算机科学与技术</td>
+      <td>本科</td>
+    </tr>
+    <tr>
+      <td>2022-至今</td>
+      <td>XX大学</td>
+      <td>软件工程</td>
+      <td>硕士</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <!-- 联系方式部分 -->
+  <h2>联系方式</h2>
+  <form action="/submit" method="post">
+    <div>
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div>
+      <label for="email">邮箱：</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+      <span>留言：</span><br>
+      <textarea></textarea>
+    </div>
+
+    <div>
+      <span>是否订阅新闻：</span>
+      <label><input type="radio" name="subscribe">是</label>
+      <label><input type="radio" name="subscribe">否</label>
+    </div>
+
+    <div>
+      <span>感兴趣的技术：<span>
+          <label><input type="checkbox" name="interest">Web开发</label>
+          <label><input type="checkbox" name="interest">移动开发</label>
+          <label><input type="checkbox" name="interest">人工智能</label>
+    </div>
+
+    <button type="submit">提交</button>
+    <button type="reset">重置</button>
+  </form>
+</body>
+
+</html>

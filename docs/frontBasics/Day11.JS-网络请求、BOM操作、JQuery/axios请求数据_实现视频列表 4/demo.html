@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入网络js文件 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 不携带本地的信息请求外部数据-->
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="parcel">
+        <!--  <div class="list">
+            <video onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)"
+                src="http://vd3.bdstatic.com/mda-ne6g0tjw477qa9aj/360p/h264/1651925003955045664/mda-ne6g0tjw477qa9aj.mp4"
+                poster="https://f7.baidu.com/it/u=3414722929,2491184617&fm=222&app=108&f=JPEG@s_2,w_681,h_381,q_100"
+                muted></video>
+            <div class="content">
+                <img src="https://pic.rmb.bdstatic.com/bjh/user/d66e9eb6d5f2b1ad7314bde66d2b2d48.jpeg?x-bce-process=image/resize,m_lfit,w_200,h_200&autime=42119"
+                    alt="">
+                <div class="ct-left">
+                    <span>真实故事真实</span>
+                    <span>超哥民间</span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="next">
+        <button id="next">下一页</button>
+    </div>
+</body>
+<script>
+    // 获取元素对象
+    let parcel = document.querySelector('.parcel')
+    let nextBtn = document.getElementById('next')
+
+    // 当前页
+    let page = 1
+
+    nextBtn.onclick = () => {
+        page += 1
+        getData()
+    }
+
+
+    // 请求数据
+    function getData() {
+        axios({
+            url: 'https://api.apiopen.top/api/getHaoKanVideo',
+            method: 'get',
+            params: {
+                page: page,
+                size: 8
+            },
+
+        }).then(res => {
+            // 创建元素并写入数据
+            createList(res)
+            let videoList = document.querySelectorAll('video')
+            videoList.forEach(function(video){
+                // 移入播放视频
+                video.addEventListener("mouseenter",function(){
+                    video.play()
+                    // video.muted = false; // 可选，根据需要取消静音
+                })
+                // 移出还原
+                video.addEventListener("mouseleave",function(){
+                    video.load()
+                })
+            })
+        })
+    }
+
+    function createList(res) {
+        // console.log(res.data.result.list)
+        res = res.data.result.list
+        console.log(res)
+        // 遍历数据
+        res.forEach(vd => {
+
+            const mylist = document.createElement('div')
+            mylist.className = 'list'
+
+            // 添加元素
+            mylist.innerHTML = `
+                    <video
+                        src="${vd.playUrl}"
+                        poster="${vd.coverUrl}"
+                        muted></video>
+                    <div class="content">
+                        <img src="${vd.userPic}"
+                            alt="">
+                        <div class="ct-left">
+                            <span>${vd.title}</span>
+                            <span>${vd.userName}</span>
+                        </div>
+                    </div>
+                `
+            parcel.appendChild(mylist)
+        });
+    }
+
+
+    getData()
+
+    
+</script>
+
+</html>
