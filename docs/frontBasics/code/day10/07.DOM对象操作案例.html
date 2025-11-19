@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 223px;
+            background-color: #ccc;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>运动器材</h1>
+    <input class="input" type="text">
+    <button class="add">添加</button>
+    <br />
+    <br />
+    <div class="content">
+        <div class="item">
+            <span>篮球</span>
+            <button class="del">删除</button>
+        </div>
+    </div>
+
+
+    <script>
+        // 添加运动器材到列表中，列表中按删除可以删除整条数据
+        let add = document.querySelector('.add');
+        let input = document.querySelector('.input');
+        let content = document.querySelector('.content');
+        add.addEventListener('click', function () {
+            console.log(input.value);
+
+            // 创建span 对象
+            let span = document.createElement('span')
+            // 创建 button 对象
+            let button = document.createElement('button')
+            // 创建 item 所在的div 对象
+            let div = document.createElement('div')
+            // 给对象设置数据
+            span.innerText = input.value;
+            button.innerText = '删除';
+            button.className = 'del';
+            div.classList.add('item');
+            // 创建的对象加入文档流
+            div.appendChild(span);
+            div.appendChild(button);
+            content.appendChild(div);
+
+            // 清空输入框的内容
+            input.value = "";
+        })
+
+        // 删除功能实现
+        content.addEventListener('click', function (e) {
+            // 监听content，获取被点击的目标标签，然后删除该目标标签
+            if (e.target.matches('.del')) {
+                console.dir(e.target);
+                e.target.parentNode.remove();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

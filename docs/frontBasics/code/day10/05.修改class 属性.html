@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pink {
+            background-color: pink;
+        }
+
+        .black {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body class="pink pink2 pink3">
+    <button class="btn">切换</button>
+    <script>
+        let body = document.querySelector('body');
+        // body.class = 'black';   // 错误，class 是一个保留字，不能作为变量名
+        // body.className = 'black';   // 直接替换，不能修改和添加
+
+        // body.classList.add('pink4');             //  增
+        // body.classList.remove('pink3');          //  删
+        // body.classList.replace('pink2', 'ping222')// 改
+        // body.classList.toggle('black');           // 切换值
+
+        let btn = document.querySelector('.btn');
+        btn.addEventListener('click', function () {
+            body.classList.toggle('black');
+        });
+
+    </script>
+</body>
+
+</html>

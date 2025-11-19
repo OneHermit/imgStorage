@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 制作标签
+        let h1 = document.createElement('h1');
+        h1.innerText = '这是新建的dom对象';
+
+        // 浏览器没显示的原因是，目前对象是创建在内存中了，没有放到html 的文档流中
+        console.log(h1);
+        console.dir(h1);
+
+        // 使用js来获取当前html 文档中的h1标签（没有）
+        // let body_h1 = document.querySelector('h1');
+        // console.log(body_h1);
+
+        // 把新建的对象加入html文档的body 下
+        let body = document.querySelector('body');
+        body.appendChild(h1);
+
+        // 通过remove 方法删除对象
+        // h1.remove();
+
+        // 获取父元素对象
+        console.log(h1.parentNode);
+
+    </script>
+</body>
+
+</html>
