@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>自适应宽度提示框</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+      }
+
+      /* 核心：宽度随内容自适应，仅包裹文字 */
+      .tip-window {
+        position: fixed;
+        padding: 12px 16px; /* 固定内边距，保证文字周围空间 */
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        font-family: "PingFang SC", sans-serif;
+        font-size: 14px;
+        text-align: center;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        /* 宽度随内容变化，最大不超过屏幕80%（避免过宽） */
+        width: auto;
+        max-width: 80%;
+        white-space: nowrap; /* 不换行，确保宽度仅由文字决定 */
+      }
+
+      /* 关闭按钮 */
+      .close-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        color: #888;
+        width: 20px;
+        height: 20px;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const CONFIG = {
+        windowCount: 99, // 弹窗数量（避免过多重叠）
+        timeInterval: 400, // 生成间隔
+        maxRetry: 100, // 位置重试上限
+        padding: 32, // 屏幕边缘留白（避免贴边）
+      };
+
+      const TIPS = [
+        "你好~",
+        "今天开心吗？",
+        "加油呀",
+        "记得吃饭",
+        "天气不错呢",
+        "好好休息",
+        "想你啦",
+        "一切顺利",
+        "别太累哦",
+        "保持微笑",
+        "笑口常开",
+        "天天开心",
+        "想你每一天",
+        "幸福每一天",
+        "长长久久",
+      ];
+
+      const BG_COLORS = [
+        "#FFE6EA",
+        "#E6F7FF",
+        "#E6FFED",
+        "#F5F5FF",
+        "#FFFBE6",
+        "#FFE6F2",
+      ];
+
+      const existingWindows = [];
+
+      /**
+       * 计算文本实际宽度（用于确定弹窗宽度）
+       */
+      function getTextWidth(text) {
+        // 创建临时元素计算文字宽度
+        const temp = document.createElement("span");
+        temp.textContent = text;
+        temp.style.fontSize = "14px";
+        temp.style.fontFamily = "PingFang SC, sans-serif";
+        temp.style.position = "absolute";
+        temp.style.visibility = "hidden"; // 隐藏但保留计算
+        document.body.appendChild(temp);
+        const width = temp.offsetWidth;
+        document.body.removeChild(temp);
+        return width;
+      }
+
+      /**
+       * 检测新弹窗是否与已有弹窗重叠
+       */
+      function isOverlapping(newWin) {
+        for (const win of existingWindows) {
+          if (
+            newWin.left < win.right &&
+            newWin.right > win.left &&
+            newWin.top < win.bottom &&
+            newWin.bottom > win.top
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      /**
+       * 生成随机位置（确保弹窗在屏幕内）
+       */
+      function getRandomPosition(winWidth, winHeight) {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        let retry = 0;
+
+        while (retry < CONFIG.maxRetry) {
+          // 计算x范围：左右留边距，确保弹窗右侧不超出屏幕
+          const maxX = screenWidth - winWidth - CONFIG.padding;
+          const x =
+            Math.floor(Math.random() * (maxX - CONFIG.padding)) +
+            CONFIG.padding;
+
+          // 计算y范围：上下留边距
+          const maxY = screenHeight - winHeight - CONFIG.padding;
+          const y =
+            Math.floor(Math.random() * (maxY - CONFIG.padding)) +
+            CONFIG.padding;
+
+          // 构建弹窗位置信息
+          const newWin = {
+            left: x,
+            top: y,
+            right: x + winWidth,
+            bottom: y + winHeight,
+          };
+
+          if (!isOverlapping(newWin)) {
+            return newWin;
+          }
+          retry++;
+        }
+
+        // 重试失败时，返回一个默认不重叠的位置
+        return {
+          left: CONFIG.padding,
+          top: CONFIG.padding + existingWindows.length * 60, // 依次往下排
+          right: CONFIG.padding + winWidth,
+          bottom: CONFIG.padding + existingWindows.length * 60 + winHeight,
+        };
+      }
+
+      /**
+       * 创建单个自适应宽度弹窗
+       */
+      function createTipWindow() {
+        // 随机选择提示文字
+        const text = TIPS[Math.floor(Math.random() * TIPS.length)];
+
+        // 计算文字宽度（加内边距得到弹窗实际宽度）
+        const textWidth = getTextWidth(text);
+        const winWidth = textWidth + 32; // 加上左右内边距（16px*2）
+        const winHeight = 44; // 固定高度（适合单行文字）
+
+        // 获取随机位置
+        const pos = getRandomPosition(winWidth, winHeight);
+
+        // 创建弹窗元素
+        const window = document.createElement("div");
+        window.className = "tip-window";
+        window.style.left = `${pos.left}px`;
+        window.style.top = `${pos.top}px`;
+        window.style.backgroundColor =
+          BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)];
+
+        // 创建文字元素
+        const textEl = document.createElement("span");
+        textEl.textContent = text;
+
+        // 创建关闭按钮
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "close-btn";
+        closeBtn.textContent = "×";
+        closeBtn.onclick = () => {
+          window.style.opacity = 0;
+          setTimeout(() => {
+            window.remove();
+            // 从已存在列表中移除
+            const index = existingWindows.findIndex((win) => win.el === window);
+            if (index !== -1) existingWindows.splice(index, 1);
+          }, 300);
+        };
+
+        // 组装弹窗
+        window.appendChild(textEl);
+        window.appendChild(closeBtn);
+        document.body.appendChild(window);
+
+        // 淡入显示
+        setTimeout(() => {
+          window.style.opacity = 1;
+        }, 50);
+
+        // 记录弹窗位置信息
+        existingWindows.push({
+          left: pos.left,
+          top: pos.top,
+          right: pos.right,
+          bottom: pos.bottom,
+          el: window,
+        });
+      }
+
+      /**
+       * 批量创建弹窗
+       */
+      function init() {
+        let count = 0;
+        const timer = setInterval(() => {
+          createTipWindow();
+          count++;
+          if (count >= CONFIG.windowCount) {
+            clearInterval(timer);
+          }
+        }, CONFIG.timeInterval);
+      }
+
+      // 页面加载完成后初始化
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

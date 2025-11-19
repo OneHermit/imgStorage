@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* id 要求是唯一的值，但是浏览器仁慈会选中ID同值的标签
+        不建议存在同值的ID，如果有需求，使用类选择器
+      */
+      #abc {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#">hello</a>
+    <a href="#" id="abc">hello</a>
+    <a href="#">hello</a>
+    <h1>
+      这是一个标题
+      <a href="#">hello</a>
+    </h1>
+    <h1 id="abc">hello</h1>
+  </body>
+</html>

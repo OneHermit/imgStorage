@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>温馨提示</title>
+    <style>
+      /* 提示窗口样式 */
+      .tip-window {
+        position: fixed;
+        padding: 20px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        font-family: "微软雅黑", sans-serif;
+        font-size: 16px;
+        text-align: center;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        user-select: none;
+        -webkit-user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 关闭按钮样式 */
+      .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+      }
+
+      .close-btn:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+        color: #333;
+      }
+
+      .close-btn:active {
+        transform: scale(0.9);
+      }
+
+      /* 防止按钮聚焦样式 */
+      .close-btn:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 配置参数
+      const CONFIG = {
+        windowCount: 20, // 建议不超过30个（避免屏幕空间不足）
+        timeInterval: 300, // 每个窗口间隔时间（毫秒）
+        windowWidth: 250, // 窗口宽度
+        windowHeight: 60, // 窗口高度
+        maxRetry: 100, // 位置重试上限（避免无限循环）
+      };
+
+      // 提示文字列表
+      const TIPS = [
+        "多喝水哦~",
+        "保持微笑呀",
+        "每天都要元气满满",
+        "记得吃水果",
+        "保持好心情",
+        "好好爱自己",
+        "我想你了",
+        "梦想成真",
+        "期待下一次见面",
+        "金榜题名",
+        "顺顺利利",
+        "早点休息",
+        "愿所有烦恼都消失",
+        "别熬夜",
+        "今天过得开心嘛",
+        "天冷了，多穿衣服",
+      ];
+
+      // 背景颜色列表
+      const BG_COLORS = [
+        "lightpink",
+        "skyblue",
+        "lightgreen",
+        "lavender",
+        "lightyellow",
+        "plum",
+        "coral",
+        "bisque",
+        "aquamarine",
+        "mistyrose",
+        "honeydew",
+        "lavenderblush",
+        "oldlace",
+      ];
+
+      // 存储已存在的窗口位置信息（避免重叠）
+      const existingWindows = [];
+
+      /**
+       * 检测新窗口是否与已有窗口重叠
+       * @param {number} x - 新窗口x坐标
+       * @param {number} y - 新窗口y坐标
+       * @returns {boolean} 是否重叠
+       */
+      function isOverlapping(x, y) {
+        const newWin = {
+          left: x,
+          top: y,
+          right: x + CONFIG.windowWidth,
+          bottom: y + CONFIG.windowHeight,
+        };
+
+        // 遍历所有已存在的窗口，判断是否碰撞
+        for (const win of existingWindows) {
+          // 矩形碰撞检测：两个矩形有重叠区域则返回true
+          if (
+            newWin.left < win.right &&
+            newWin.right > win.left &&
+            newWin.top < win.bottom &&
+            newWin.bottom > win.top
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      /**
+       * 生成不重叠的随机位置
+       * @returns {object|null} {x, y} 或 null（重试上限仍失败）
+       */
+      function getNonOverlappingPosition() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        let retryCount = 0;
+
+        while (retryCount < CONFIG.maxRetry) {
+          // 生成随机位置（确保窗口完全在屏幕内）
+          const x = Math.floor(
+            Math.random() * (screenWidth - CONFIG.windowWidth)
+          );
+          const y = Math.floor(
+            Math.random() * (screenHeight - CONFIG.windowHeight)
+          );
+
+          // 检测是否重叠，不重叠则返回位置
+          if (!isOverlapping(x, y)) {
+            return { x, y };
+          }
+
+          retryCount++;
+        }
+
+        console.warn("屏幕空间不足，无法生成不重叠窗口");
+        return null;
+      }
+
+      /**
+       * 创建单个温馨提示窗口
+       */
+      function createTipWindow() {
+        // 获取不重叠位置，失败则终止
+        const position = getNonOverlappingPosition();
+        if (!position) return;
+
+        const { x, y } = position;
+
+        // 1. 创建窗口元素
+        const window = document.createElement("div");
+        window.className = "tip-window";
+
+        // 2. 随机选择文案和背景色
+        const randomTip = TIPS[Math.floor(Math.random() * TIPS.length)];
+        const randomBg =
+          BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)];
+
+        window.style.backgroundColor = randomBg;
+
+        // 3. 创建关闭按钮
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "close-btn";
+        closeBtn.textContent = "×";
+
+        // 4. 创建文本元素（避免按钮遮挡文字）
+        const textEl = document.createElement("span");
+        textEl.textContent = randomTip;
+
+        // 5. 组装窗口结构
+        window.appendChild(textEl);
+        window.appendChild(closeBtn);
+
+        // 6. 设置窗口位置和大小
+        window.style.width = `${CONFIG.windowWidth}px`;
+        window.style.height = `${CONFIG.windowHeight}px`;
+        window.style.left = `${x}px`;
+        window.style.top = `${y}px`;
+
+        // 7. 记录窗口位置（用于后续重叠检测）
+        existingWindows.push({
+          left: x,
+          top: y,
+          right: x + CONFIG.windowWidth,
+          bottom: y + CONFIG.windowHeight,
+          element: window,
+        });
+
+        // 8. 添加到页面
+        document.body.appendChild(window);
+        // 淡入效果
+        setTimeout(() => {
+          window.style.opacity = 1;
+        }, 10);
+
+        // 9. 关闭按钮事件
+        closeBtn.addEventListener("click", () => {
+          // 淡出效果
+          window.style.opacity = 0;
+          // 从页面移除
+          setTimeout(() => {
+            document.body.removeChild(window);
+            // 从已存在窗口列表中删除（释放位置）
+            const index = existingWindows.findIndex(
+              (win) => win.element === window
+            );
+            if (index !== -1) {
+              existingWindows.splice(index, 1);
+            }
+          }, 300);
+        });
+
+        // 可选：点击窗口主体也可关闭
+        window.addEventListener("click", (e) => {
+          // 避免触发按钮的点击事件（防止双重执行）
+          if (e.target !== closeBtn) {
+            closeBtn.click();
+          }
+        });
+      }
+
+      /**
+       * 批量创建窗口（按时间间隔）
+       */
+      function batchCreateWindows() {
+        let createdCount = 0;
+
+        const timer = setInterval(() => {
+          createTipWindow();
+          createdCount++;
+
+          // 创建完指定数量后停止定时器
+          if (createdCount >= CONFIG.windowCount) {
+            clearInterval(timer);
+          }
+        }, CONFIG.timeInterval);
+      }
+
+      // 页面加载完成后启动
+      window.addEventListener("load", batchCreateWindows);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 常用方式 */
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+        .box1{
+            /* 修改盒子的计算方式:box-sizing
+                content-box : 默认配置，盒子的最终宽高 = 内边距 + 边框匡 + 内容
+                border-box: 盒子的最终宽高 = width、height
+            */
+            box-sizing:border-box;
+            width: 200px;
+            height: 200px;
+            border: 20px solid red;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        box1
+    </div>
+</body>
+</html>

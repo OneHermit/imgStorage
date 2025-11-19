@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 函数: 实际上就时把一些常用的功能写成一起,形成工具
+        // 1 函数的定义语法格式
+        /*
+            funcation name(要接收的参数){
+                功能代码
+            }
+        */
+        // 定义函数
+        function showName(){
+            console.log("威利");
+            console.log("威利");
+            console.log("威利");
+        }
+        // 调用函数 函数名()
+        showName()
+        // 带参数的函数,计算两个数相加的结果
+        function add(a,b){
+            console.log(a + b);
+        }
+        add(22,44)
+        // 带返回值的函数
+        function add2(a ,b){
+            // 把结果给调用语句
+            return a + b;
+        }
+        // 用 ret 变量来接收 调用add2 返回的结果
+        let ret = add2(11,22);
+        console.log(ret);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 水平排列 */
+        .box {
+            display: flex;
+            /* 子项主副轴居中 */
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* 处理卡片 */
+        .box-card {
+            width: 280px;
+            /* 溢出隐藏 */
+            overflow: hidden;
+
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+
+            /* 多度动画设置 */
+            transition: all 0.4s ease;
+        }
+
+        /* 处理图片 */
+        .box-card .img {
+            height: 200px;
+            /* 2.1 放大溢出处理 */
+            overflow: hidden;
+        }
+
+        .box-card img {
+            width: 100%;
+            /* 2.2 过滤动画设置 */
+            transition: all 0.4s ease;
+        }
+
+        /* 内容显示 */
+        .content {
+            padding: 20px;
+        }
+
+        /* 标题内容 */
+        .content h3 {
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 价格显示 */
+        .price .new-price {
+            font-weight: bold;
+            font-size: 22px;
+            color: #ff6b6b;
+        }
+
+        .price .old-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+
+        /* 按钮处理 */
+        .btns {
+            display: flex;
+            /* 子项间距 */
+            gap: 10px;
+            /* 加外边距 */
+            margin: 15px;
+        }
+
+        .btns div {
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            color: white;
+
+            flex: 1 0 0;
+            text-align: center;
+            /* 按钮动效 */
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btns div:first-child {
+            background-color: #4caf50;
+        }
+
+        .btns div:last-child {
+            background-color: rgb(255, 42, 0);
+        }
+
+        /* 2 给 box-card 下的图片放大 */
+        .box-card:hover img {
+            transform: scale(1.2);
+        }
+
+        /* 3 给外框 box-card 加效果 */
+        .box-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 按钮加效果 */
+        .btns div:hover {
+            transform: translateY(-2px);
+            background-color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-card">
+            <div class="img">
+                <img src="./image/运动手表.png" alt="">
+            </div>
+            <div class="content">
+                <h3>智能运动手表 Pro</h3>
+                <p>全天候健康监测，50米防水，超长续航30天，支持多种运动模式。</p>
+                <div class="price">
+                    <span class="new-price">￥899</span>
+                    <span class="old-price">￥1299</span>
+                </div>
+                <div class="btns">
+                    <div>加入购物车</div>
+                    <div>立即购买</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-card">
+            <div class="img">
+                <img src="./image/运动手表.png" alt="">
+            </div>
+            <div class="content">
+                <h3>智能运动手表 Pro</h3>
+                <p>全天候健康监测，50米防水，超长续航30天，支持多种运动模式。</p>
+                <div class="price">
+                    <span class="new-price">￥899</span>
+                    <span class="old-price">￥1299</span>
+                </div>
+                <div class="btns">
+                    <div>加入购物车</div>
+                    <div>立即购买</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-card">
+            <div class="img">
+                <img src="./image/运动手表.png" alt="">
+            </div>
+            <div class="content">
+                <h3>智能运动手表 Pro</h3>
+                <p>全天候健康监测，50米防水，超长续航30天，支持多种运动模式。</p>
+                <div class="price">
+                    <span class="new-price">￥899</span>
+                    <span class="old-price">￥1299</span>
+                </div>
+                <div class="btns">
+                    <div>加入购物车</div>
+                    <div>立即购买</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

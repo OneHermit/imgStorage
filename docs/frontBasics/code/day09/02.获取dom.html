@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1 class="box">hello1</h1>
+    <p>World</p>
+    <a href="http://www.baidu.com">百度一下</a>
+    <script>
+        // document: 浏览器默认创建的，里面包含
+        // 1、当前html的所有内容
+        // 2、操作html内容的方法
+        // 3、无需创建，直接拿来用即可，是浏览器自行创建的
+
+        // 获取一个标签对象
+        // let box1 = document.querySelector('.box')
+        // console.log(box1);
+        // console.dir(box1);  // 以对象的形式展示
+
+        // 获取多个标签对象
+        // 返回的是一个伪数组：只能查看，不能操作
+        let b = document.querySelectorAll(".box")
+        // 查看
+        // console.log(b);
+        // console.log(b.length);
+
+        // b[0] = 1111;        // 无法修改，修改无效
+        // console.log(b[0]);
+        // b.splice(0, 1);      // 报错，没有该方法，说明不是真实的数组
+
+
+
+    </script>
+</body>
+
+
+</html>

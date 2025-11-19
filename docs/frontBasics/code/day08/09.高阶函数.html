@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 定义一个打印两个数（+，-，*，/）之后的结果的函数。
+        // 定义一个函数twoNum 来接收两个数据以及两个数据的具体 操作 的函数
+
+        function twoNum(x, y, todoFn) {
+            // 调用两个数的具体操作 todoFn 函数 
+            todoFn(x, y)
+        }
+        // 调用twoNum函数
+        twoNum(20, 2,
+            function (a, b) {
+                console.log(a + b);
+            }
+        );
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

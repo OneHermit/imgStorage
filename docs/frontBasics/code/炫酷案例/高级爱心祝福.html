@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>适中大小的粒子爱心</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #1a1a1a; /* 深色背景突出粒子 */
+      }
+
+      /* 弹窗样式保持不变 */
+      .tip-window {
+        position: fixed;
+        padding: 20px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: "微软雅黑", sans-serif;
+        font-size: 16px;
+        text-align: center;
+        z-index: 9999;
+        transition: all 1.5s cubic-bezier(0.3, 0.8, 0.2, 1);
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.9;
+        box-sizing: border-box;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background: rgba(255, 255, 255, 0.6);
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #555;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #222;
+      }
+
+      .total-close-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 10000;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ff3366;
+        color: white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+        transition: all 0.2s;
+      }
+
+      .total-close-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 51, 102, 0.9);
+      }
+
+      #particleCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 5000;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="total-close-btn" id="totalCloseBtn">×</button>
+    <canvas id="particleCanvas"></canvas>
+
+    <script>
+      let isClosing = false;
+      let centerX, centerY;
+      let particles = [];
+      let canvas, ctx;
+      let batchTimer = null;
+      let heartSize; // 爱心大小（全局变量，方便调整）
+
+      // 初始化Canvas并计算中心位置
+      function initCanvas() {
+        canvas = document.getElementById("particleCanvas");
+        ctx = canvas.getContext("2d");
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+      }
+
+      // 适配窗口大小，确保爱心完整显示
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        centerX = canvas.width / 2;
+        centerY = canvas.height / 2;
+
+        // 核心调整：计算适中的爱心大小（屏幕较小边的1/5，确保完整显示）
+        const maxVisibleSize = Math.min(canvas.width, canvas.height) / 5;
+        heartSize = maxVisibleSize; // 固定为屏幕较小边的1/5，保证在任何尺寸下都完整显示
+      }
+
+      // --------------------------
+      // 弹窗功能（保持不变）
+      // --------------------------
+      const CONFIG = {
+        windowCount: 20,
+        timeInterval: 300,
+        windowWidth: 250,
+        windowHeight: 60,
+        maxRetry: 100,
+      };
+
+      const TIPS = [
+        "多喝水哦~",
+        "保持微笑呀",
+        "每天都要元气满满",
+        "记得吃水果",
+        "保持好心情",
+        "好好爱自己",
+        "我想你了",
+        "梦想成真",
+        "期待下一次见面",
+        "金榜题名",
+        "顺顺利利",
+        "早点休息",
+        "愿所有烦恼都消失",
+        "别熬夜",
+        "今天过得开心嘛",
+        "天冷了，多穿衣服",
+      ];
+
+      const BG_COLORS = [
+        "rgba(255, 192, 233, 0.5)",
+        "rgba(135, 206, 235, 0.5)",
+        "rgba(144, 238, 144, 0.5)",
+        "rgba(230, 230, 250, 0.5)",
+        "rgba(255, 255, 224, 0.5)",
+      ];
+
+      const existingWindows = [];
+
+      function createTipWindow() {
+        if (isClosing) return;
+
+        const position = getNonOverlappingPosition();
+        if (!position) return;
+        const { x, y } = position;
+
+        const window = document.createElement("div");
+        window.className = "tip-window";
+        window.style.left = `${x}px`;
+        window.style.top = `${y}px`;
+        window.style.width = `${CONFIG.windowWidth}px`;
+        window.style.height = `${CONFIG.windowHeight}px`;
+
+        const randomTip = TIPS[Math.floor(Math.random() * TIPS.length)];
+        const randomBg =
+          BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)];
+        window.style.backgroundColor = randomBg;
+
+        const textEl = document.createElement("span");
+        textEl.textContent = randomTip;
+        textEl.style.color = "#333";
+        textEl.style.fontWeight = "500";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "close-btn";
+        closeBtn.textContent = "×";
+        closeBtn.onclick = () => {
+          if (!isClosing) removeWindow(window);
+        };
+
+        window.appendChild(textEl);
+        window.appendChild(closeBtn);
+        window.onclick = (e) => {
+          if (e.target !== closeBtn && !isClosing) removeWindow(window);
+        };
+
+        existingWindows.push({
+          element: window,
+          x,
+          y,
+          centerX: x + CONFIG.windowWidth / 2,
+          centerY: y + CONFIG.windowHeight / 2,
+          distance: Math.hypot(
+            x + CONFIG.windowWidth / 2 - centerX,
+            y + CONFIG.windowHeight / 2 - centerY
+          ),
+        });
+
+        document.body.appendChild(window);
+        setTimeout(() => (window.style.opacity = 0.9), 10);
+      }
+
+      function removeWindow(windowEl) {
+        windowEl.style.opacity = 0;
+        setTimeout(() => {
+          document.body.removeChild(windowEl);
+          const index = existingWindows.findIndex(
+            (win) => win.element === windowEl
+          );
+          if (index !== -1) existingWindows.splice(index, 1);
+        }, 300);
+      }
+
+      function isOverlapping(x, y) {
+        const newRight = x + CONFIG.windowWidth;
+        const newBottom = y + CONFIG.windowHeight;
+        return existingWindows.some(
+          (win) =>
+            x < win.x + CONFIG.windowWidth &&
+            newRight > win.x &&
+            y < win.y + CONFIG.windowHeight &&
+            newBottom > win.y
+        );
+      }
+
+      function getNonOverlappingPosition() {
+        const maxX = window.innerWidth - CONFIG.windowWidth;
+        const maxY = window.innerHeight - CONFIG.windowHeight;
+        let retry = 0;
+        while (retry < CONFIG.maxRetry) {
+          const x = Math.floor(Math.random() * maxX);
+          const y = Math.floor(Math.random() * maxY);
+          if (!isOverlapping(x, y)) return { x, y };
+          retry++;
+        }
+        return { x: 50, y: 50 };
+      }
+
+      function batchCreateWindows() {
+        let count = 0;
+        batchTimer = setInterval(() => {
+          createTipWindow();
+          if (++count >= CONFIG.windowCount) clearInterval(batchTimer);
+        }, CONFIG.timeInterval);
+      }
+
+      // --------------------------
+      // 核心：适配屏幕的粒子爱心
+      // --------------------------
+      function startCloseAnimation() {
+        isClosing = true;
+        if (batchTimer) clearInterval(batchTimer);
+
+        const activeWindows = existingWindows.filter((win) =>
+          document.body.contains(win.element)
+        );
+
+        if (activeWindows.length === 0) {
+          createParticleHeart();
+          return;
+        }
+
+        // 每个弹窗生成12-20个粒子（保持密集感但不过多）
+        activeWindows.forEach((win) => {
+          const particleCount = 12 + Math.floor(Math.random() * 9);
+          for (let i = 0; i < particleCount; i++) {
+            const initX = win.x + Math.random() * CONFIG.windowWidth;
+            const initY = win.y + Math.random() * CONFIG.windowHeight;
+
+            particles.push({
+              x: initX,
+              y: initY,
+              size: 1.2 + Math.random() * 1.8, // 粒子稍小，更精致
+              color: getRandomParticleColor(),
+              rotation: 0,
+              rotationSpeed: (win.distance / 500) * 0.05,
+              progress: 0,
+              distance: win.distance,
+              windowEl: win.element,
+            });
+          }
+
+          // 弹窗缩小动画
+          const winEl = win.element;
+          winEl.style.transition = "all 1.2s cubic-bezier(0.3, 0.8, 0.2, 1)";
+          winEl.style.width = "0";
+          winEl.style.height = "0";
+          winEl.style.padding = "0";
+          winEl.style.opacity = "0";
+          winEl.style.boxShadow = "none";
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      // 粒子颜色微调，更贴近参考图的红色渐变
+      function getRandomParticleColor() {
+        const hue = 355 + Math.random() * 5; // 更纯的红色（355-360）
+        const saturation = 80 + Math.random() * 20; // 80-100%饱和
+        const lightness = 35 + Math.random() * 30; // 35-65%亮度（避免过亮）
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      }
+
+      // 爱心形状计算（限制在屏幕内）
+      function getHeartPoint(angle) {
+        const t = angle;
+        // 标准爱心极坐标公式，使用全局heartSize控制大小
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y =
+          13 * Math.cos(t) -
+          5 * Math.cos(2 * t) -
+          2 * Math.cos(3 * t) -
+          Math.cos(4 * t);
+        return {
+          x: centerX + x * (heartSize / 16), // 按比例适配
+          y: centerY - y * (heartSize / 16), // 确保尖角向上
+        };
+      }
+
+      // 生成爱心内部随机点（限制范围，确保在屏幕内）
+      function getRandomHeartPoint() {
+        const angle = Math.random() * Math.PI * 2;
+        const scale = 0.2 + Math.random() * 0.8; // 缩小分布范围，避免超出
+        const point = getHeartPoint(angle);
+
+        // 进一步限制粒子位置，确保不超出屏幕
+        const maxOffsetX = canvas.width * 0.4;
+        const maxOffsetY = canvas.height * 0.4;
+        point.x = Math.max(
+          centerX - maxOffsetX,
+          Math.min(centerX + maxOffsetX, point.x)
+        );
+        point.y = Math.max(
+          centerY - maxOffsetY,
+          Math.min(centerY + maxOffsetY, point.y)
+        );
+
+        // 添加微小随机偏移，增强颗粒感
+        point.x += (Math.random() - 0.5) * 8;
+        point.y += (Math.random() - 0.5) * 8;
+        return point;
+      }
+
+      // 粒子动画（确保最终位置在屏幕内）
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let allCompleted = true;
+
+        particles.forEach((particle) => {
+          if (particle.progress < 1) {
+            allCompleted = false;
+            particle.progress += 0.015;
+            const progressCurve = easeOutQuad(particle.progress);
+
+            // 位置计算
+            const dx = centerX - particle.x;
+            const dy = centerY - particle.y;
+            const moveX = particle.x + dx * progressCurve;
+            const moveY = particle.y + dy * progressCurve;
+
+            // 旋转计算
+            const rotateAngle = particle.rotation;
+            particle.rotation += particle.rotationSpeed;
+            const rx = moveX - centerX;
+            const ry = moveY - centerY;
+            const rotatedX =
+              rx * Math.cos(rotateAngle) - ry * Math.sin(rotateAngle);
+            const rotatedY =
+              rx * Math.sin(rotateAngle) + ry * Math.cos(rotateAngle);
+            particle.currentX = centerX + rotatedX;
+            particle.currentY = centerY + rotatedY;
+
+            // 过渡到爱心形状
+            if (particle.progress > 0.7) {
+              const heartPoint = getRandomHeartPoint();
+              const transition = (particle.progress - 0.7) / 0.3;
+              particle.currentX = lerp(
+                particle.currentX,
+                heartPoint.x,
+                transition
+              );
+              particle.currentY = lerp(
+                particle.currentY,
+                heartPoint.y,
+                transition
+              );
+            }
+          } else {
+            // 固定在爱心形状上，确保在屏幕内
+            const heartPoint = getRandomHeartPoint();
+            particle.currentX = heartPoint.x;
+            particle.currentY = heartPoint.y;
+          }
+
+          // 绘制粒子
+          ctx.fillStyle = particle.color;
+          ctx.beginPath();
+          ctx.arc(
+            particle.currentX,
+            particle.currentY,
+            particle.size,
+            0,
+            Math.PI * 2
+          );
+          ctx.fill();
+        });
+
+        // 移除弹窗
+        particles.forEach((p) => {
+          if (
+            p.windowEl &&
+            p.progress > 0.5 &&
+            document.body.contains(p.windowEl)
+          ) {
+            document.body.removeChild(p.windowEl);
+            p.windowEl = null;
+          }
+        });
+
+        if (!allCompleted) {
+          requestAnimationFrame(animateParticles);
+        } else {
+          // 心跳幅度减小，避免超出屏幕
+          startHeartBeat();
+        }
+      }
+
+      // 心跳动画（限制缩放范围）
+      function startHeartBeat() {
+        let scale = 1;
+        let isExpanding = false;
+
+        function beat() {
+          if (!canvas) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // 缩小心跳幅度（1.0→1.05→0.98），避免超出屏幕
+          if (isExpanding) {
+            scale += 0.005;
+            if (scale > 1.05) isExpanding = false;
+          } else {
+            scale -= 0.004;
+            if (scale < 0.98) isExpanding = true;
+          }
+
+          // 绘制粒子并应用缩放
+          particles.forEach((particle) => {
+            const angle = Math.atan2(
+              particle.currentY - centerY,
+              particle.currentX - centerX
+            );
+            const distance = Math.hypot(
+              particle.currentX - centerX,
+              particle.currentY - centerY
+            );
+            const scaledDistance = distance * scale;
+            const x = centerX + Math.cos(angle) * scaledDistance;
+            const y = centerY + Math.sin(angle) * scaledDistance;
+
+            // 再次限制位置，确保心跳时不超出屏幕
+            const maxX = canvas.width - 5;
+            const minX = 5;
+            const maxY = canvas.height - 5;
+            const minY = 5;
+            const clampedX = Math.max(minX, Math.min(maxX, x));
+            const clampedY = Math.max(minY, Math.min(maxY, y));
+
+            ctx.fillStyle = particle.color;
+            ctx.beginPath();
+            ctx.arc(clampedX, clampedY, particle.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          requestAnimationFrame(beat);
+        }
+
+        beat();
+      }
+
+      // 工具函数
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function easeOutQuad(t) {
+        return t * (2 - t);
+      }
+
+      // 初始化
+      window.addEventListener("load", () => {
+        initCanvas();
+        batchCreateWindows();
+        document
+          .getElementById("totalCloseBtn")
+          .addEventListener("click", startCloseAnimation);
+      });
+    </script>
+  </body>
+</html>

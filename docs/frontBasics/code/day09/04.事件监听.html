@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="box">hello</h1>
+    <button>点我阿！！！</button><br>
+    <input type="text">
+    <script>
+        // 事件监听三要素
+        // 1 事件源: 监听谁
+        // let h1 = document.querySelector(".box");
+        // let btn = document.querySelector("button");
+
+        // // 2 事件类型：以什么方式来触发，鼠标点击，双击，鼠标划过等
+
+        // btn.addEventListener('click', function () {
+        //     // 3 当监听的事件在事件源上发生时，要执行的操作
+        //     console.log("按钮被点击了...");
+        //     h1.innerHTML = '你好';
+        // });
+
+
+        // 监听 input
+        let input = document.querySelector("input");
+        input.addEventListener("keydown", function (e) {
+            console.log(e);
+            // console.log('hello world', e.key);
+            if (e.key == 'Enter') {
+                console.log("登录成功");
+            }
+        })
+
+    </script>
+</body>
+
+</html>

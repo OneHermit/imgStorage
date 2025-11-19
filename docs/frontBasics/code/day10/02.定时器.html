@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">发送验证码</button>
+    <script>
+        // 1 间歇定时器：每隔多长时间执行一个操作
+        // 参数1：定时执行的代码
+        // 参数2：定时执行周期（毫秒）
+        // let time = 0;
+        // let a = setInterval(function () {
+        //     time = time + 1;
+        //     console.log('hello world');
+        //     // 执行3次后退出定时器
+        //     if (time == 3) {
+        //         clearInterval(a);
+        //     }
+        // }, 2000);
+
+        // 2 清除定时器
+        // clearInterval(a);
+        // console.log("hello");
+        // console.log("hello");
+        // console.log("hello");
+        // console.log("hello");
+        // console.log("hello");
+        // 结论：定时器和其他代码是异步执行的，就是浏览器是从上往下执行的代码，
+        // 定时器启动完就任由定时器自己发展了（创建完就放手了）
+
+
+        // 3 延迟定时器：延迟一个时间段之后执行代码一次
+        // let b = setTimeout(function () {
+        //     console.log("爆炸");
+        // }, 3000)
+
+        // // 清除延迟定时器
+        // clearTimeout();
+
+
+        // 4 案例
+        let btn = document.querySelector('.btn');
+        btn.addEventListener('click', function () {
+            // 禁用按钮点击
+            btn.disabled = true;
+            let i = 3;
+            // 计数显示
+            let a = setInterval(() => {
+                btn.innerHTML = `发送验证码(${i}s)`;
+                if (i == 0) {
+                    // 解除按钮禁用以及去除秒数
+                    btn.disabled = false;
+                    btn.innerHTML = '发送验证码';
+
+                    clearInterval(a);
+                }
+                i = i - 1;
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

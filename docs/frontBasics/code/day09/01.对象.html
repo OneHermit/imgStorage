@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 对象的定义
+        /*
+            { 
+                键（key）：值(value),
+                键：值,
+                键... 
+            }
+
+            注意：1 在同一个对象中键是不能重复的，但是值可以重复 
+                2 如果属性名（键）有特殊符号的需要加 "" 号
+                3 普通属性名 可 加引号也可以不加
+                4 字符串的值 一定要加引号
+            
+        */
+        //let ls = ["张三", 19, 31, 190]
+        let hanxin = {
+            name: "韩信",
+            age: 19,
+            "user-heigh": 190,
+            skill: function () {
+                console.log(' 国士无双 ');
+            },
+            skill2: function () {
+                console.log(' 背水一战 ');
+            }
+        }
+
+        console.log(typeof haxin);
+
+        // 对象的基本操作
+        // 读取数据，属性和方法的调用
+        console.log(hanxin.name, hanxin.age);
+        hanxin.skill();
+
+        // 特殊健的调用user-heigh
+        console.log(hanxin['user-heigh']);
+
+        // 修改数据
+
+        // 添加属性
+
+        // 删除属性
+
+        // 遍历对象
+        let obj = {
+            name: '小明',
+            age: 19,
+            height: 190
+        }
+        for (let k in obj) {
+            console.log(k, typeof k);
+            console.log(obj[k]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+
+            /* 给改变的宽设置过渡动画,ease 先快后慢*/
+            /* transition: width 1s ease; */
+
+            /* 语法介绍 */
+            /* transition: width 1s ease, background-color 1s ease; */
+
+            /* 一次设置所有的过渡 */
+            /* transition: all 1s ease; */
+
+            /* 过渡效果和自定义曲线 */
+            /* transform: all 3s cubic-bezier(0.03, 0.93, 0.08, 0.95); */
+
+        }
+
+        .box:hover {
+            width: 400px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

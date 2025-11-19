@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 增加滚动条，让内容不溢出 */
+            /* overflow: scroll; 水平没溢出也有滚动条 */
+            /* 只提供溢出方向的滚动条 */
+            overflow: auto;     
+            /* overflow: hidden;      隐藏滚动条 */
+            
+        }
+
+        /* --------------- 核心：去除滚动条上下三角形 --------------- */
+        /* 1. WebKit 浏览器（Chrome、Safari、Edge 新版）- 完美支持 */
+        /* 隐藏垂直滚动条的上下按钮（三角形） */
+        /* .box::-webkit-scrollbar-button:vertical {
+            display: none;
+        } */
+        /* 可选：隐藏水平滚动条的左右按钮（若需） */
+        /* .box::-webkit-scrollbar-button:horizontal {
+            display: none;
+        } */
+        
+        /* 自定义滚动条样式 */
+        /* 滚动条宽度 */
+        .box::-webkit-scrollbar {
+            width: 6px; 
+        }
+        /* 轨道背景色 */
+        .box::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 3px;
+        }
+        /* 滑块颜色 */
+        .box::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 3px;
+        }
+        /* 滑块 hover 颜色 */
+        .box::-webkit-scrollbar-thumb:hover {
+            background: #999; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+    </div>
+</body>
+</html>

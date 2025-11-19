@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入方式：内嵌式 -->
+    <!-- <style>
+      /* 这里写css 代码为内嵌式 */
+      p {
+        background-color: red;
+      }
+    </style> -->
+
+    <!-- 方式二：外联式 link 标签可以将外部的css 文件引入到当前的html页面里
+        好处：1 避免代码臃肿，拆分html内容
+            2 可以重复使用css 文件 
+    -->
+    <!-- <link rel="stylesheet" href="./index.css" /> -->
+  </head>
+  <body>
+    <!-- 第三中：行内的方式，直接写在标签的 style 属性里 -->
+    <p style="background-color: red; font-size: 60px">这是一个段落</p>
+  </body>
+</html>

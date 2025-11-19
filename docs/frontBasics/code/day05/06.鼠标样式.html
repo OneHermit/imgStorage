@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 300px;
+            border: 1px solid pink;
+
+            /* 1 鼠标状态 
+                pointer : 手指
+            */
+            /* cursor: pointer; */
+            /* 
+                2 自定义鼠标图标：注意需要给备选方案，如果图片不存在用什么代替
+            */
+            /* cursor: url(./image/大白菜.png),pointer; */
+        }
+
+        /* 3 整个浏览器都是自定义的鼠标图片 */
+        html{
+            cursor: url(./image/大白菜.png),pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <a href="">百度一下</a>
+</body>
+</html>

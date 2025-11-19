@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 1 后代选择器：选中指定标签的所有后代，包括孙子 */
+      /* p {
+        color: red;
+      } */
+
+      /* 2 选中类 box 的后代标签 */
+      /* .box p {
+        color: red;
+      } */
+
+      /* 3 选中类 box 的 box_p 后代类 */
+      .box .box_p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>外部p</p>
+    <p>外部p2</p>
+    <div class="box">
+      <p>儿子p1</p>
+      <p class="box_p">儿子p2</p>
+      <div>
+        <p class="box_p">孙子p1</p>
+        <p>孙子p2</p>
+      </div>
+    </div>
+  </body>
+</html>

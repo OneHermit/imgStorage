@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .my_box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /* 绝对定位：脱离标准文档流*/
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: greenyellow;
+            /* 作为父盒子，使用相对定位占位置，不移动 */
+            position: relative;
+        }
+
+        /* 
+            总结：相对定位
+                1、会脱离标准文档流
+                2、参照谁来移动，参照开启定位的祖先标签来移动，如果没有则参照浏览器边界移动
+                3、通常配合相对定位使用，子盒子根据父盒子来移动（子绝父相）
+        */
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="father">
+        <div class="box my_box">
+            box
+        </div>
+    </div>
+    
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    
+    <div class="box">
+        box
+    </div>
+    
+</body>
+</html>

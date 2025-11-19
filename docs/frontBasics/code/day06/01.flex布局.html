@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            height: 200px;
+            border: 3px solid red;
+            /* 设置容器为弹性盒子 */
+            display: flex;
+            /* 1 定义的主轴方向：水平或垂直 （默认水平轴）*/
+            /* flex-direction: row-reverse; */
+            /* 主轴为垂直轴 */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+
+
+            /* 2 设置主轴的对齐方式,参考以上定义的主轴是水平还是垂直 */
+            /* justify-content: center; */
+            /* justify-content: flex-end; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+
+            /* 3 设置副轴的对齐方式，参考以上主轴 */
+            /* align-items: center; */
+
+            /* 4 设置子项是否换行 */
+            /* flex-wrap: wrap; */
+            /* 5 设置子项的行和列间距 */
+            /* gap: 10px; */
+            /* gap: 10px 20px; */
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border: 1px solid blue;
+        }
+
+        /* 6 子项属性设置 */
+        .item:nth-child(1) {
+            /* flex-grow: 1; */
+        }
+
+        .item:nth-child(2) {
+            /* flex-grow: 1; */
+            /* flex-shrink: 0; */
+            /* flex-basis: 50px; */
+            /* 拓展空白几份  是否可压缩 默认长度 */
+            flex: 1 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+        <div class="item">item6</div>
+    </div>
+
+    <!-- <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+    </div> -->
+</body>
+
+</html>

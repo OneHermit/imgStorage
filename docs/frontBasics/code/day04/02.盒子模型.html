@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color:pink;
+            /* 设置盒子内容的大小 */
+            width: 200px;
+            height: 200px;
+
+
+            /* 设置盒子的边框 */
+            /* boder: 边框粗细 边框样式 边框颜色 */
+            border: 10px solid red;
+            border-top: 10px solid blue;
+            border-right: 10px solid purple;
+            /* 总结：
+                1、边框会将盒子撑大
+            */
+
+
+            /* 内边距：内容和边框的距离
+             上 右 下 左 按顺序设置数据，没有数据的用对面的数据
+            */
+            /* padding: 10px;
+            padding: 10px 20px;
+            padding: 10px 20px 30px;
+            padding: 10px 20px 30px 40px;
+            padding-left: 60px;
+            padding-top: 40px; */
+            /* 总结：内边距会将盒子撑大 */
+
+
+            /* 外边距：控制盒子和盒子之间的距离 */
+            /* margin: 10px;
+            margin: 10px 20px;
+            margin: 10px 20px 30px;
+            margin: 10px 20px 30px 40px;
+            margin-left: 30px; */
+
+            /* 和 box2 一起设置外边距
+            外边距塌陷：box2 和 box1 垂直方向会重叠，水平方向不会
+            */
+            margin: 40px;
+
+        }
+
+        .box2{
+             background-color:blue;
+            /* 设置盒子内容的大小 */
+            width: 200px;
+            height: 200px;
+            margin: 40px;
+        }
+
+        /* 水平方向外边距不会塌陷 */
+        span{
+            background-color: pink;
+            margin: 40px;
+        }
+
+        /* 去除默认边框 */
+        button{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1 宽高 边框 内边距 -->
+    <div class="box1">
+        box1
+    </div>
+    <!-- 2 外边距 -->
+    <div class="box2">
+        box2
+    </div>
+    <!-- 1 边框 -->
+    <button>按钮</button><br>
+
+    <!-- 垂直外边距 -->
+    <!--3 行内标签，浏览器会将换行解析成为一个空格
+      如何解决：1 将换行删除
+               2 将换行设置为注释标签 
+    -->
+    <span>box1</span>
+    <span>box2</span>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="box">hello1</h1>
+    <p>World</p>
+    <a href="http://www.baidu.com">百度一下</a>
+
+    <script>
+        // 想要操作标签，必须要先获取标签对象，然后才能操作标签的内容
+        let h1El = document.querySelector(".box")
+
+        // 获取和操作文本内容 
+        // innerText  : 纯文本操作
+        console.log(h1El.innerText);
+        h1El.innerText = "Hello2";
+
+        // innerHTML  ：可以解析标签
+        console.log(h1El.innerHTML);
+        h1El.innerHTML = "<s>Hello2</s>";
+        h1El.innerText = "<s>Hello2</s>";
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 编写一个函数 isEvenOrOdd (num)，接收一个整数 num，
+        // 判断该数是偶数还是奇数，并返回字符串 "偶数" 或 "奇数"。
+        function isEvenOrOdd(num) {
+            if (num % 2 == 0) {
+                return "偶数";
+            } else {
+                return "奇数"
+            }
+        }
+        // 2. 编写一个函数 sumEvenNumbers (n)， 
+        // 计算从 1 到 n（包含）之间所有偶数的和，使用 for 循环实现。
+        function sumEvenNumbers(n) {
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                // 偶数加入 sum 中
+                if (i % 2 == 0) {
+                    sum = sum + i;
+                }
+            }
+            return sum;
+        }
+        // 3. 编写一个函数 isSeason (num), 接收一个 1-12 的整数，
+        // 判断该月份属于什么季节。（3-5 春季，6-8 夏季， 9-11 秋季，12-2 冬季）
+        function isSeason(num) {
+            if (num >= 3 && num <= 5) {
+                console.log("春季");
+            } else if (num >= 6 && num <= 8) {
+                console.log("夏季");
+            } else if (num >= 9 && num <= 11) {
+                console.log("秋季");
+            } else if ((num >= 1 && num <= 2) || num == 12) {
+                console.log("冬季");
+            }
+        }
+
+        // 调用函数
+        isEvenOrOdd(1);
+        isEvenOrOdd(2);
+        sumEvenNumbers(10);
+        isSeason(5);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

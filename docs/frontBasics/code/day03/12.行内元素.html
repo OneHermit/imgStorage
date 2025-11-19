@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 行内元素的宽度由内容决定，所有居中是无效的 */
+      /* span {
+        text-align: center;
+      }
+
+      a {
+        text-align: center;
+      } */
+      .big {
+        background-color: pink;
+        text-align: center;
+      }
+      .p1 {
+        background-color: orange;
+        width: 600px;
+        margin: 0 auto;
+        height: 200px;
+        /* 垂直居中 */
+        line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="big">
+      <span>行内标签span</span>
+      <a href="#">行内标签a</a>
+      <p class="p1">块级标签</p>
+    </div>
+  </body>
+</html>

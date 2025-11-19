@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 选择器权重演示 内联>ID>类>标签
+        每个选择器都有权重值，用多少个就叠加多少权重值
+      */
+      div .box {
+        background-color: green;
+      }
+      .box {
+        background-color: pink;
+      }
+      h1 {
+        background-color: red;
+      }
+
+      /* 颜色演示 */
+      #h1Id {
+        /* 红绿黄 0-255 ,可组合出任意颜色*/
+        /* background-color: rgb(200, 100, 100); */
+
+        /* 红绿黄透明 0-255 ,可组合出任意颜色*/
+        background-color: rgba(220, 31, 31, 1);
+
+        /* 开头，将数字转换成十六进制表示 */
+        /* background-color: #12d685; */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="box" style="background-color: orange">hello</h1>
+      <h1 id="h1Id">hello2</h1>
+    </div>
+  </body>
+</html>

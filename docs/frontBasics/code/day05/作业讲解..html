@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 将菜单分左右 */
+        .head{
+            height: 55px;
+            width: 100%;
+            background-color: pink;
+            position: relative;
+        }
+        .head_box div{
+            display: inline-block;
+            line-height: 55px;
+        }
+        .head .left{
+            position: absolute;
+            left: 100px;
+        }
+        .head .right{
+            position: absolute;
+            right: 100px;
+        }
+
+        /* 设置文字间距 */
+        .left div{
+            margin-right: 40px;
+        }
+        .right div{
+            margin-left: 40px;
+        }
+
+        /* 广告图片处理 */
+        .suspend-img{
+            width: 160px;
+            height: 320px;
+            position: fixed;
+            right: 0;
+            top: 200px;
+            z-index: 1;
+        }
+        /* 背景图片 */
+        .bg-img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="head_box left">
+            <div>微博</div>
+            <div>b站</div>
+            <div>公众号</div>
+            <div>大神</div>
+            <div>友人帐</div>
+        </div>
+        <div class="head_box right">
+            <div>网易支付中心</div>
+            <div>mumu模拟器下载</div>
+            <div>进入官网</div>
+        </div>
+        <img src="./image/head.jpg" alt="" width="100%" height="100%">
+    </div>
+    <img class="suspend-img" src="./image/suspend.png" alt="">
+    <img class="bg-img" src="./image/bg.jpg" alt="">
+</body>
+</html>

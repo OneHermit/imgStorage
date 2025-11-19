@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 通用格式处理*/
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        li{
+            list-style: none;
+        }
+
+        /* 一级目录处理 */
+        .head{
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            padding: 0 40px;
+        }
+
+        .head .title{
+            /* 设置为行内块 */
+            display: inline-block;
+            height: 40px;
+            margin-right: 20px;
+        }
+        .left{
+            left: 10px;
+        }
+        .right{
+            position: absolute;
+            right: 40px;
+            top: 0px;
+        }
+        
+        /* 处理二级列表 */
+        .head .title{
+            /* 为了调整内部的content */
+            position: relative;
+        }
+        .head .title .content{
+            position: absolute;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 0 20px;
+            display: none;
+            margin-top: 5px;
+        }
+        .head .right .title .content{
+            left: -200px;
+        }
+
+        .content li {
+            border-bottom: 1px solid #ccc;
+        }
+        .content li:last-child {
+            border: none;
+        }
+
+        .title:hover .content{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="left">
+            <div class="title">我的京东
+                <ul class="content">
+                    <li>
+                        <a href="#">我的京豆</a>
+                        <a href="#">我的白条</a>
+                        <a href="#">我的理财</a>
+                    </li>
+                    <li>
+                        <a href="#">帮助中心</a>
+                        <a href="#">售后服务</a>
+                        <a href="#">在线客服</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title">企业采购
+                <ul class="content">
+                    <li>
+                        <a href="#">企业团购</a>
+                        <a href="#">京东工采</a>
+                        <a href="#">公共采购</a>
+                    </li>
+                    <li>
+                        <a href="#">京东慧采</a>
+                        <a href="#">京东锦礼</a>
+                        <a href="#">礼品卡</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <div class="title">网站导航
+                <ul class="content">
+                    <li>abc</li>
+                    <li>sdfsdf</li>
+                    <li>sdfds</li>
+                    <li>sdfdsf</li>
+                </ul>
+            </div>
+            <div class="title">手机京东
+                <ul class="content">
+                    <li>手机京东</li>
+                    <li>关注京东JD.COM</li>
+                    <li>京东金融客户端</li>
+                    <li>京东健康客服端</li>
+                    <li>关注京东小程序</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

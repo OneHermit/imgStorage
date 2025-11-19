@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>年会抽奖</h1>
+    <h2>中奖名单：周星星</h2>
+    <button class="btn">开始抽奖</button>
+    <script>
+        // Math.random()    // 0-1 的随机数，不包含1
+        // console.log(Math.random());
+
+        // Math.floor : 向下取整
+        console.log(Math.floor(1.2), Math.floor(1.7), Math.floor(-1.5));
+
+        // 生成0-10 不包含10 的随机数
+        console.log(Math.random() * 10);
+        console.log(Math.floor(Math.random() * 10));
+
+
+        // 抽奖小程序
+        let btn = document.querySelector('.btn');
+        let usernames = ['刘德华', '周星驰', '威利', '迪丽热巴', '刘涛', '刘诗诗'];
+        // 点击按钮抽奖
+        btn.addEventListener('click', function () {
+            let i = Math.floor(Math.random() * 5);
+            let h2 = document.querySelector('h2');
+            h2.innerHTML = `中奖名单：${usernames[i]}`;
+        });
+
+    </script>
+</body>
+
+</html>

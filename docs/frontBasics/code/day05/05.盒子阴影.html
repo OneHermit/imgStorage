@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 300px;
+            border: 1px solid #ccc;
+
+            /* 设置阴影 
+                水平移动 垂直移动 阴影程度 阴影范围 颜色
+            */
+            /* box-shadow: 0px 0px 5px 5px #ccc; */
+            /* 内阴影，用的少 */
+            /* box-shadow: 0px 0px 5px 5px black inset; */
+
+            /* 让边框好看，加圆角 */
+            border-radius: 10px;
+            /* 参考京东鼠标悬浮商品框 */
+            
+        }
+        /* 悬浮阴影 */
+        .box:hover{
+            box-shadow: 0px 0px 5px 5px #ccc;
+        }
+
+        button:hover{
+            box-shadow: 0px 0px 5px 5px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <br>
+    <button>按钮</button>
+</body>
+</html>

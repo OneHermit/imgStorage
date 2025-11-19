@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .father{
+            text-align: center;
+            margin-top: 60px;
+            height: 70px;
+            line-height: 70px;
+        }
+        .father .baidu{
+            height: 70px;
+            border: 1px solid blue;
+        }
+        .father div{
+            display: inline-block;
+            vertical-align: top; /* 统一垂直对齐方式，解决偏移 */
+        }
+        .left{
+            width: 700px;
+            height: 70px;
+        }
+        .right{
+            background-color: blue;
+            width: 100px;
+            height: 70px;
+
+            color: white; /* 补充：文字变白，提升可读性 */
+        }
+
+
+        .left input{
+            border: none;
+            height: 60px;
+            width: 600px;
+            font-size: 32px;
+            display: inline-block;
+        }
+
+        .left input:focus{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="baidu">
+            <div class="left">
+                <input type="text" name="baidu">
+            </div><!--
+            --><div class="right">
+                百度一下
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

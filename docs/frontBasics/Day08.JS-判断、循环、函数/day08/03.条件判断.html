@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 条件判断,
+        // boolean 表达式: 运算之后的结果为true 或 fasle 的公式
+        // if
+        /*
+            语法: 
+            if(boolean 表达式){
+                要执行的代码
+            }
+        */
+        // 需求: 根据用户的性别来显示不同的信息
+        // 男:欢迎兄弟,女:欢迎姐妹
+        let gender = "男";
+        if(gender == "男"){
+            console.log("欢迎兄弟");
+        }
+        if(gender == "女"){
+            console.log("欢迎姐妹");
+        }
+
+        // else 语句,
+        // 注意:不能单独使用,需要结合 if 来使用
+        /* 语法:
+            if(booelan表达式){
+                booelan表达式为true 时执行的代码
+            }
+            else{
+                booelan表达式为false 时执行的代码
+            }
+        */
+        // 需求: 根据用户的年龄做不同的显示
+        // true 和 false 两种结果的判断,使用 if else
+        let age = 19;
+        if(age >= 18){
+            console.log("恭喜成年!!!");
+        }else{
+            console.log("未成年");
+        }
+        // else if 
+        // 注意: 不能单独使用,需要结合 if 来使用
+        /*
+            if(boolean 表达式){
+            }else if(boolean 表达式){
+            }else if(boolean 表达式){
+            }
+        */
+        // 需求: 通过学生的成绩显示 优秀,良好,及格,不及格
+        let score = 60;
+        if(score >= 90 && score <= 100){
+            console.log("优秀");
+        }else if(score >= 75 && score < 90){
+            console.log("良好");
+        }else if(score >= 60 && score < 75){
+            console.log("及格");
+        }else if(score >= 0 && score < 60){
+            console.log("不及格");
+        }else{
+            console.log("分数不正确");
+        }
+        // 综合案例:某某店入门信息检测
+        // 要求性别为 男,年龄大于18岁,满足条件打开大门欢迎
+        if(gender == '男' && age > 18){
+            console.log("欢迎光临");
+        }else{
+            console.log("不满足条件");
+        }
+        // 拓展: 三元(三目)运算符  
+        // let aa = boolean 表达式? true值 : false 值; 
+        // 需求: 根据性别做不同的显示
+        let sex = gender == '男' ? "真男人" : "真女人";
+        console.log(sex);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
