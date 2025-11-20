@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="box">hello1</h1>
+    <p>world</p>
+
+    <script>
+        // 通过js 来获取h1标签的文本内容,以及修改内容
+        // 想要操作标签,必须要先获取到标签对象,
+        // 然后才能操作标签的内容
+        let h1 = document.querySelector(".box")
+        console.dir(h1);
+
+        // 获取标签的文本,修改文本内容 
+        // innerText : 操作的普通的文本
+        // console.log(h1.innerText);
+        // h1.innerText = "<s>新的内容</s>"
+
+        // innerHTML : 可以操作标签
+        console.log(h1.innerHTML);
+        h1.innerHTML = "<s>新的内容</s>"
+    </script>
+</body>
+</html>

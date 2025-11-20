@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+        }
+        .box{
+            background-color: red;
+            /* 2D 移动 */
+            /* 平移: 水平/垂直 移动*/
+            /* transform: translate(50px, 100px); */
+            /* transform: translate(100%, 50%); */
+            /* transform: translate(200px); */
+
+            /* 缩放 */
+            /* transform: scale(0.5); */
+
+            /* 旋转 */
+            /* transform: rotate(90deg); */
+
+            /* 倾斜 水平倾斜(左右对角拉扯)  垂直倾斜(上下对角拉扯)*/
+            /* transform: skew(20deg,30deg); */
+
+            /* 组合 :transform: translate(50px, 50px) rotate(45deg) scale(1.2); */
+            /* transform: translate(100%,100%) rotate(360deg) scale(1.5); */
+            /* 设置动画 */
+            transition: all 2s ease;
+        }
+
+        .box:hover{
+            /* 鼠标移动,改位置,移动,大小 */
+            transform: translate(100%,100%) rotate(360deg) scale(1.5);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">box1</div>
+    <div></div>
+</body>
+</html>

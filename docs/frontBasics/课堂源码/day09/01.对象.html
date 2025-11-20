@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对象的定义
+        /*
+            {
+                属性名:属性值,
+                键(key):值(value),
+                键...
+            }
+
+            注意:
+            1.在同一个对象中,属性名是不能重复的,但是值可以重复的
+            2.字符串的值 一定要加引号(' ")
+            3.属性名带特殊符号,需要加引号(括起来,表示一个整体)
+            4.普通属性名,可加引号,可不加
+        */
+        // 定义人物对象
+        let hanxin = {
+            "name":'韩信',
+            age : 19,
+            "user-heigh" : 190,
+            skill1 : function(){
+                console.log('背水一站')
+            },
+            skill2: function(){
+                console.log("名刀")
+            }
+        }
+        console.log(hanxin)
+        // 对象的基本操作
+        // 读取对象中的数据,属性,和方法的调用
+        console.log(hanxin.name,hanxin.age)
+        // 注意: 方法调用需要加()
+        hanxin.skill1()
+        // 特殊属性的调用,带特殊符号  对象["属性名"]
+        console.log(hanxin["user-heigh"])
+
+        // 修改对象中属性的值
+        hanxin.age = 20;
+        hanxin.skill1 = function(){
+            console.log("司命")
+        }
+        hanxin.skill1()
+        
+        // 添加属性
+        hanxin.gender = "男"
+
+        // 删除属性
+        delete hanxin.gender
+
+        console.log(hanxin)
+
+        // 遍历对象
+        let obj = {
+            name : "小明",
+            age : 19,
+            height : 190
+        }
+        // 使用for-in 来遍历对象的所有属性名
+        // key : 是一个变量,用来存放遍历到的每个属性名
+        // obj: 要遍历的对象
+        for(let key in obj){
+            console.log(key, obj[key]);
+        }
+    </script>
+</body>
+</html>

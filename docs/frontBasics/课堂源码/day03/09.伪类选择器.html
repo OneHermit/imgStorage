@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* 伪类选择器: 来衍生状态或特点位置 */
+      /* h1{
+         color: red;
+      } */
+      /* 鼠标悬浮选中h1 */
+      /* .h1Clz:hover{
+         background-color: pink;
+         color: blue;
+         width: 400px;
+         height: 400px;
+      } */
+
+      /* 鼠标左键点击选中 */
+      .h1Clz2:active{
+         background-color: red;
+         color: blue;
+         width: 400px;
+         height: 400px;
+      }
+
+      /* 聚焦伪类选择 */
+      input:focus{
+         background-color: pink;
+      }
+      /* 选中首个,最后一个,指定一个儿子 */
+      ul > li:first-child{
+         background-color: pink;
+      }
+      ul > li:last-child{
+         background-color: pink;
+      }
+      ul > li:nth-child(3){
+         background-color: pink;
+      }
+    </style>
+</head>
+<body>
+  <h1 class="h1Clz">鼠标悬停伪类选择器</h1>
+  <h1 class="h1Clz2">鼠标左键按下伪类选择器</h1>
+  <input type="text">
+  <ul>
+   <li>列表项1</li>
+   <li>列表项2</li>
+   <li>列表项3</li>
+   <li>列表项4</li>
+   <li>列表项5</li>
+   <li>列表项6</li>
+  </ul>
+</body>
+</html>

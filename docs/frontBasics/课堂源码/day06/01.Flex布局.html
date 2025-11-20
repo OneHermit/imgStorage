@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 200px;
+            border: 3px solid red;
+            /* 设置容器 为弹性盒子 */
+            display: flex;
+
+            /* 定义主轴方向: 水平或垂直(默认是水平) */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+            /* flex-direction: row-reverse; */
+
+            /* 主轴对齐方式:参考主轴,以上定义的主轴是水平的还是垂直的 */
+            /* justify-content: center; */
+            /* 副轴对齐方式,参考主轴,以上定义的主轴为水平或垂直,相反 */
+            /* align-items: center; */
+
+            /* 设置子项是否换行 */
+            /* flex-wrap: wrap; */
+            /* 设置子项的间距 */
+            /* gap: 10px; */
+            /* 行 列 间距 */
+            /* gap: 10px 20px; */
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border: 1px solid blue;
+        }
+        /* 设置子项的属性 */
+        .item:nth-child(1){
+            /* 占主轴方向的拓张比例 */
+            /* flex-grow: 1; */
+            /* 不收缩 */
+            /* flex-shrink: 0; */
+            /* 设置初始长度 */
+            /* flex-basis: 200px; */
+            /* 整合的子项属性 */
+            /* flex: 1 0 200px; */
+        }
+        .item:nth-child(3){
+            /* flex-grow: 1; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+        <div class="item">item6</div>
+    </div>
+    <!-- <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+    </div> -->
+</body>
+</html>

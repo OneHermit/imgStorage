@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 400px;
+            border: 3px solid pink;
+            /* 增加背景图片 */
+            background-image: url(./image/大白菜.png);
+            /* 默认情况下,图片使用重复平铺的方式占满了整个盒子 */
+            /* 设置背景图片的重复方式 
+                no-repeat: 不重复
+                repeat:默认的重复
+                repeat-x:水平方向的重复
+                repeat-y:垂直方向的重复
+            */
+            background-repeat: no-repeat;
+            /* 设置背景图的大小 
+                宽 高
+            */
+            background-size: 100px 100px;
+            /* 背景的位置设置 右 下*/
+            /* background-position: 100px 100px; */
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

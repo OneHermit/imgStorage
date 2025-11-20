@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 高阶: 把函数当成一个值,传给另一个函数去使用
+        // 需求:定义一个函数,该函数能够打印两个数的(+,-,*,/)之后的结果
+        function twoNum(x, y, todoFn){
+            todoFn(x, y);
+        }
+        // 相加
+        twoNum(33,55,function(a,b){
+            console.log(a + b);
+        });
+        // 相乘
+        twoNum(33,55,function(a,b){
+            console.log(a * b);
+        });
+        // 数据内置的过滤函数
+        let arr = [1,2,3,4,5,6,7,8,9];
+        let newArr = arr.filter(function(num){
+            return num % 2 == 0;
+        })
+        console.log(newArr);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: pink;
+            /* 设置盒子的内容的大小 */
+            width: 200px;
+            height: 200px;
+
+            /* 设置盒子的边框 */
+            border: 10px solid red;
+            /* 上:top 下:bottom 左:left 右:right */
+            border-top: 10px solid blue;
+            border-right: 10px solid purple;
+            /*  总结: 边框会把整个盒子撑大  */
+            
+            /* 内边距: 内容到边框的距离 
+              上 右 下 左 按顺序设置数据,没有数据则用对面的数据
+            */
+            /* padding: 10px;
+            padding: 10px 20px;
+            padding: 10px 20px 30px;
+            padding: 10px 20px 30px 40px; */
+            /* padding: 60px; */
+
+            /* 总结：
+                内边距会将盒子撑大
+            */
+            /* 外边距 
+            上 右 下 左 按顺序来设置值,没有值则用对面的数值
+            */
+            margin: 20px;
+            /* margin: 20px 30px 40px 50px; */
+            /* 
+                总结: 
+                   1、外边距不会撑大盒子
+                   2、
+            */
+        }
+
+        .box2{
+            /* 
+             外边距塌陷: box2 和 box1 垂直方向会重叠,水平方向不会
+            */
+            margin: 20px;
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+            border: 10px solid green;
+        }
+        /* 外边距,水平方向不会塌陷 */
+        span{
+            background-color: pink;
+            margin: 20px;
+        }
+
+        button{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        box1
+    </div>
+    <div class="box2">
+        box2
+    </div>
+    <button>按钮</button>
+    <!-- 浏览器会把换行解析为一个空格 -->
+    <span class="span span1">box1</span><!--
+    --><span class="span span2">box2</span>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="box">hello1</h1>
+    <h1 class="box">hello2</h1>
+    <p>world</p>
+    <script>
+        // document : 浏览器加载完整个html页面默认创建的,
+        // 里面包含 1.包含了当前html 的所有内容
+        //         2. 包含操作html内容的方法
+        //         3. 无需创建,直接拿来使用即可,是浏览器自行创建的
+        
+        // 获取一个标签对象
+        let h1 = document.querySelector(".box");
+        console.log(h1);
+        console.dir(h1);
+
+        // 获取多个标签对象
+        let b = document.querySelectorAll(".box");
+        console.log(b, b.length);
+        // 伪数组,不能修改里面的数据
+        b[0] = 11111;   // 无法修改,也不报错
+        b.splice(0,1)   // 报错,b数组没有splice
+        console.log(b);
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .my_box{
+            background-color: blue;
+            width: 100px;
+            /* 相对定位: 不会推理标准的文档流(人在,魂飘了)*/
+            position: relative;
+            left: 200px;
+            top:200px;
+        }
+        /* 
+            相对定位:
+              1. 不会脱离标准文档流,原右的位置大小还在
+              2. 参照谁来移动---> 根据自己原本的位置来移动
+              3. 虽然移动了,但是原有位置依然保留
+
+        */
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="box my_box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+
+</body>
+</html>

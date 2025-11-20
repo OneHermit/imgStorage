@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .my_box{
+            background-color: blue;
+            /* 开启固定定位 : 会脱离标准的文档流([飘起来])*/
+            position: fixed;
+            width: 100px;
+            /* 移动定位的盒子  上左 或 右下*/
+            /* left: 200px;
+            top: 200px; */
+            right: 100px;
+            bottom: 100px;
+        }
+        /* 
+            固定定位:
+             1. 脱离了标准的文档流
+             2. 参照谁来移动,根据浏览器的边界来移动
+        */
+    </style>
+</head>
+<body>
+    <div class="box my_box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+
+</body>
+</html>

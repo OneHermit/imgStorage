@@ -1,0 +1,1 @@
+alert('这是index.js 中的弹出窗')

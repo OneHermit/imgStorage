@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 60px;
+            height: 60px; 
+            padding: 10px; 
+            background-color: pink;
+            border: 2px solid red;
+            /* 把块级元素修改为行元素 
+            inline-block: 拥有块级元素的优点,行级元素的优点
+            */
+           display: inline-block; 
+            /* 
+                块级标签的优缺点:
+                优点: 可以设置宽高、内边距
+                缺点: 不能水平排列
+            */
+        }
+        span{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border: 2px solid red;
+            display: block;
+            /* 
+                行内元素的优缺点:
+                优点: 可以水平排列,可以当成文本来操作
+                缺点: 不能设置宽高,不能设置垂直方向的外边距
+            */
+        }
+
+        .abc{
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        a{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <hr>
+    <span>span1</span>
+    <span>span2</span>
+
+    <div class="abc">
+        <a href="#">aaaa</a>
+    </div>
+</body>
+</html>

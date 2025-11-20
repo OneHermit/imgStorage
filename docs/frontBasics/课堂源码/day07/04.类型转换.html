@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // + 有一个是字符串就会拼接成字符串
+        console.log(1 + '2');
+        console.log('11' + '22');
+        // 除了+ 其他的运算会当成 数值来运算
+        console.log(2 - '1');
+        console.log('2' - '1');
+        console.log('2' * '2');
+        console.log('2' / '2');
+        console.log('2' % '2');
+        console.log(2 - 'a');       // NaN(not a number) 是数值类型(数字和非数字做运算,结果就是NaN)
+        console.log(typeof (2 - 'a'));
+
+        // 显示转换
+        let a = Number('123.123')
+        console.log(typeof a, a + 2);
+        let b = parseInt('123.123') // 只保留整数
+        console.log(typeof b,b);
+        let c = parseFloat('123.123')   // 保留小数
+        console.log(typeof c,c);
+
+        console.log(typeof (123 + ''));
+        let d = String(123)
+        console.log(typeof d, d + 1);
+    </script>
+</body>
+</html>

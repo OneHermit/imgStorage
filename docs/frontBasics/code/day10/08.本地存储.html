@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pink {
+            background-color: pink;
+        }
+
+        .black {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body class="pink">
+    <button class="btn">切换</button>
+    <script>
+        let body = document.querySelector('body');
+        let btn = document.querySelector('.btn');
+
+        // 3 默认使用本地存储的数据
+        let ls = localStorage.getItem('bodyClz')
+        if (ls != null) {
+            body.className = ls;
+        }
+
+        // 1 跟换背景
+        btn.addEventListener('click', function () {
+            body.className = 'black';
+            // 保存用户设置
+            localStorage.setItem('bodyClz', 'black');
+        });
+        // 2 保存用户的设置信息
+        // 本地数据存入
+        // localStorage.setItem('username', '威利')
+        // 本地数据取出
+        // let username = localStorage.getItem('username');
+        // console.log(username);
+
+    </script>
+</body>
+
+</html>

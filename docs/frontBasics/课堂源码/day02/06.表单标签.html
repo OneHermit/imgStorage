@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- form : 表单标签: 把改标签下的 数据提交给指定的程序(位置) 
+            action: 填写数据提交的地址
+            method : 表单数据提交的方式
+               get:  数据会显示在浏览器的地址栏上
+               post: 数据会隐藏起来,不会显示在地址栏上(推荐)
+    -->
+    <form action="#" method="get">
+        <!-- 输入标签 -->
+        账号:<input type="text" name="username" placeholder="填写账号"><br>
+        密码:<input type="password" name="password"><br>
+        生日: <input type="date"><br>
+        性别: <label><input type="radio" name="gender" value="boy">男 </label>
+            <input id="girl" type="radio" name="gender" value="girl"><label for="girl">女</label><br>
+        爱好 :  <input type="checkbox" name="hobby" value="python">Python
+                <input type="checkbox" name="hobby" value="html">HTML
+                <input type="checkbox" name="hobby" value="dance">跳舞<br>
+        地址: <select name="address" id="">
+                <option value="bj">北京</option>
+                <option value="gz">广州</option>
+                <option value="sz">深圳</option>
+            </select><br>
+        简介: <textarea name="intro" id="" cols="30" rows="10"></textarea><br>
+        <input type="submit">
+        <button type="submit">按钮</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     /* 子代选择器:选中指定标签下的儿子,不包括孙子 */
+     /* 选中 box 类下的所有p(儿子p) */
+     /* .box > p{
+      color: red;
+     } */
+
+     .box > .box_p {
+      color: red;
+     }
+    </style>
+</head>
+<body>
+   <p>外部p1</p>
+   <p>外部p2</p>
+   <div class="box">
+      <p>儿子p1</p>
+      <p class="box_p">儿子p2</p>
+      <div>
+        <p class="box_p">孙子p1</p>
+        <p>孙子p2</p>
+      </div>
+   </div>
+</body>
+</html>

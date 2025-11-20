@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入图标的样式库 -->
+    <link rel="stylesheet" href="./font_bv7nueglp6d/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 1 设置整体的卡片 */
+        body{
+           text-align: center;
+        }
+
+        .box-card{
+            width: 350px;
+            margin: 30px;
+            border-radius: 15px;
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* 溢出的内容隐藏 */
+            overflow: hidden;
+
+            display: inline-block;
+        }
+        /* 实现标题样式 */
+        .head{
+            background-color: #3498dc;
+            padding: 20px;
+
+            text-align: left;
+        }
+
+        .box-card:nth-child(2) .head{
+            background-color: #f44ecd;
+        }
+
+        .box-card:nth-child(3) .head{
+            background-color: #eb6608;
+        }
+
+        .icon-yonghu{
+            font-size: 60px;
+            color: white;
+        }
+        .head .right{
+            display: inline-block;
+            margin-left: 20px;
+        }
+        /* 处理内容显示 */
+        .content{
+            height: 200px;
+            padding: 25px;
+            color: #354153;
+
+            overflow: auto;
+        }
+
+        /* 脚的处理 */
+        .footer{
+            background-color: rgb(246, 250, 252);
+            border-top: 1px solid #d8d2d2;
+            height: 60px;
+            line-height: 60px;
+            position: relative;
+        }
+        .footer div{
+            display: inline-block;
+        }
+        .footer .left{
+            color: #f39c12;
+            position: absolute;
+            left: 10px;
+        }
+        .footer .right{
+            position: absolute;
+            right: 10px;
+            color: #8c8888;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-card">
+        <div class="head">
+            <span class="iconfont icon-yonghu"></span>
+            <div class="right">
+                <h2>张三</h2>
+                <p>高级UI设计师</p>
+            </div>
+        </div>
+        <div class="content">
+            这个产品设计得非常出色！用户界面简洁直观，交互体验流畅。特别是色彩搭配和图标设计，既现代又不失专业性。我特别喜欢它的响应式设计，在不同设备上都能完美展示。动画效果恰到好处，不会过于花哨但又能提供良好的视觉反馈。唯一的建议是希望增加更多的自定义选项，让用户可以根据自己的喜好调整界面风格。
+        </div>
+        <div class="footer">
+            <div class="left">
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+            </div>
+            <div class="right">
+                2005年10月1日
+            </div>
+        </div>
+    </div>
+    <div class="box-card">
+        <div class="head">
+            <span class="iconfont icon-yonghu"></span>
+            <div class="right">
+                <h2>张三</h2>
+                <p>高级UI设计师</p>
+            </div>
+        </div>
+        <div class="content">
+            这个产品设计得非常出色！用户界面简洁直观，交互体验流畅。特别是色彩搭配和图标设计，既现代又不失专业性。我特别喜欢它的响应式设计，在不同设备上都能完美展示。动画效果恰到好处，不会过于花哨但又能提供良好的视觉反馈。唯一的建议是希望增加更多的自定义选项，让用户可以根据自己的喜好调整界面风格。
+        </div>
+        <div class="footer">
+            <div class="left">
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+            </div>
+            <div class="right">
+                2005年10月1日
+            </div>
+        </div>
+    </div>
+    <div class="box-card">
+        <div class="head">
+            <span class="iconfont icon-yonghu"></span>
+            <div class="right">
+                <h2>威利老师</h2>
+                <p>高级UI设计师</p>
+            </div>
+        </div>
+        <div class="content">
+            这个产品设计得非常出色！用户界面简洁直观，交互体验流畅。特别是色彩搭配和图标设计，既现代又不失专业性。我特别喜欢它的响应式设计，在不同设备上都能完美展示。动画效果恰到好处，不会过于花哨但又能提供良好的视觉反馈。唯一的建议是希望增加更多的自定义选项，让用户可以根据自己的喜好调整界面风格。
+        </div>
+        <div class="footer">
+            <div class="left">
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+                <span class="iconfont icon-shoucang"></span>
+            </div>
+            <div class="right">
+                2005年10月1日
+            </div>
+        </div>
+    </div>
+</body>
+</html>

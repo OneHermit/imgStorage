@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .my_box{
+            background-color: blue;
+            width: 100px;
+            /* 绝对定位: */
+            position: absolute;
+            left: 100px;
+            top: 20px;
+        }
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: greenyellow;
+            /* 父级加定位 */
+            position: relative; 
+        }
+        /* 
+            绝对定位:
+              1. 脱离了标准的文档流
+              2. 参照谁来移动,参照开启定位的祖先标签来移动的,如果没有则参照浏览器的边界来移动
+              3. 通常绝对定位 配合相对定位来使用,子盒子根据父盒子来移动(子绝父相)[子盒子在父盒子内部移动]
+        */
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="father">
+        <div class="box my_box">
+            box
+        </div>
+    </div>
+    <div class="box">
+        box
+    </div>
+    <div class="box">
+        box
+    </div>
+
+</body>
+</html>
