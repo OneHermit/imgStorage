@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 不带本地信息给到外部服务器 -->
+    <meta name="referrer" content="no-referrer">
+
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 外层列表设置 */
+        .list-box{
+            width: 80%;
+            min-width: 1400px;
+            display: flex;
+            /* 允许子项可以换行 */
+            flex-wrap: wrap;
+
+            /* justify-content: center; */
+            /* 上下外边距为0,左右自动分配 */
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        /* 设置卡片盒子 */
+        .box-card{
+            width: 22.5%;
+            margin-left: 2%;
+            margin-bottom: 2%;
+            border-radius: 10px;
+            box-shadow: 3px 3px 7px #999;
+
+            padding: 20px 10px;
+        }
+        /* 视频处理 */
+        .box-card video {
+            width: 100%;
+            height: 220px;
+
+            /* 保持元素的宽高比,同时完全覆盖容器区域,必要时会裁剪内容 */
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        /* 内容样式 */
+        .content {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .content img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .content .right{
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+        /* 处理文字 */
+        .right>span:first-child{
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .right>span:last-child{
+            font-size: 12px;
+            color: #3b3b3b;
+        }
+        /* 处理按钮 */
+        .next {
+            text-align: center;
+        }
+        #next {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-box">
+        <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-bg--icon" data-v-52e2e17a=""><path d="M6.41659 15.625C3.88528 15.625 1.83325 13.7782 1.83325 11.5H10.9999C10.9999 13.7782 8.94789 15.625 6.41659 15.625Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.125 16.0827C15.125 18.614 13.2782 20.666 11 20.666L11 11.4993C13.2782 11.4993 15.125 13.5514 15.125 16.0827Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.875 6.91667C6.875 9.44797 8.72183 11.5 11 11.5L11 2.33333C8.72182 2.33333 6.875 4.38536 6.875 6.91667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.5833 7.375C13.052 7.375 11 9.22183 11 11.5H20.1667C20.1667 9.22183 18.1146 7.375 15.5833 7.375Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <!-- <div class="box-card">
+            <video controls src="./image/video.mp4"></video>
+            <div class="content">
+                <img src="./image/girl.png" alt="">
+                <div class="right">
+                    <span>标题标题标题</span>
+                    <span>账号名</span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="next">
+        <button id="next">下一页</button>
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let listBox = document.querySelector('.list-box')
+        let nextBtn = document.querySelector('#next')
+
+        let pageNum = 1;
+        nextBtn.addEventListener('click',function(){
+            pageNum =  pageNum + 1;
+            getData()
+        })
+
+        // 获取网络数据
+        function getData(){
+            axios({
+                url:'https://api.apiopen.top/api/getHaoKanVideo',
+                method : 'get',
+                params: {
+                    size : 8,
+                    page : pageNum
+                }
+            }).then(function(response){
+                let list = response.data.result.list
+                // 创建卡片并设置数据
+                createList(list)
+                // 绑定点击事件
+                let videoList = document.querySelectorAll('video')
+                console.log(videoList);
+
+                videoList.forEach(function (video) {
+                    video.addEventListener('mouseenter',function(){
+                        console.log("播放");
+                        video.muted = true;
+                        video.play()
+                    })
+                    video.addEventListener('mouseleave',function(){
+                        console.log("停止播放");
+                        video.load()
+                    })
+                })
+            })
+        }
+
+
+        // 创建卡片并设置数据
+        function createList(list){
+            // <div class="box-card">
+            //     <video src="./image/video.mp4"></video>
+            //     <div class="content">
+            //         <img src="./image/girl.png" alt="">
+            //         <div class="right">
+            //             <span>标题标题标题</span>
+            //             <span>账号名</span>
+            //         </div>
+            //     </div>
+            // </div>
+            for(let i = 0; i < list.length; i++){
+                // 获取卡片的需要的数据
+                let obj = list[i]
+                // console.log(obj);
+                let boxCard = document.createElement('div')
+                boxCard.className = 'box-card'
+
+                boxCard.innerHTML = `<video src="${obj.playUrl}"></video>
+                                        <div class="content">
+                                            <img src="${obj.userPic}" alt="">
+                                            <div class="right">
+                                                <span>${obj.title}</span>
+                                                <span>${obj.userName}</span>
+                                            </div>
+                                        </div>`
+                listBox.appendChild(boxCard)
+            }
+        }
+
+        getData()
+    </script>
+</body>
+</html>

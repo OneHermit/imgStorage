@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <h1>hello world</h1>
+    <button>置顶</button>
+    <h1>hello world</h1>
+    <script>
+        // 所有的浏览器上的操作都是在window 对象上的操作,可以省略window
+        // console.log('hello');
+        // window.console.log('hello')
+        // alert(1111)
+        // window.alert(1111)
+        // window.document.querySelector('')
+
+        // 其他window 属性
+        // 1 获取浏览器窗口的可视化区域的宽和高
+        console.log(window.innerWidth,window.innerHeight);
+
+        // 2 滚动操作
+        // let btn = document.querySelector('button')
+        // btn.addEventListener('click',function(){
+        //     // 置顶 x y
+        //     window.scrollTo(0,100)
+        //     console.log(window.screenY);
+        // })
+
+        // 3 页面加载时间 onload
+        // 浏览器加载完 整个html页面的标签之后自行触发(调用) onload 函数
+        // 方式一:
+        // window.addEventListener('load',function(){
+        //     console.log("窗口已经加载完");
+        // })
+        // 方式二:
+        window.onload = function(){
+            // let btn = document.querySelector('button')
+            // btn.addEventListener('click',function(){
+            //     // 置顶 x y
+            //     window.scrollTo(0,100)
+            //     console.log(window.screenY);
+            // })
+        }
+
+        // 4 盒子距离浏览器的距离
+        let btn = document.querySelector('button')
+        let rect = btn.getBoundingClientRect()
+        console.log(rect.top, rect.bottom,rect.left,rect.right);
+    </script>
+</body>
+</html>

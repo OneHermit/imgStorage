@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            background-color: pink;
+            height: 200px;
+            width: 200px;
+            border-bottom: 6px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <script>
+        // 修改样式属性
+        let h1 = document.querySelector('h1')
+        // 实际上就是修改标签的 style 属性
+        h1.style.width = '100px'
+        h1.style.height = '100px'
+        // 因为有特殊符号-: 不是,使用内置驼峰命名的属性
+        h1.style.borderBottom = '6px solid blue'
+        h1.style.backgroundColor = 'red'
+
+    </script>
+</body>
+</html>

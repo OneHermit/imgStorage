@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pink{
+            background-color: pink;
+        }
+        .black{
+            background-color: black;
+        }
+    </style>
+</head>
+<body class="pink">
+    <button class="btn">切换背景</button>
+
+    <script>
+        let btn = document.querySelector('.btn')
+        let body = document.querySelector('body')
+        // localStorage.setItem('username','威利')
+        // console.log(localStorage.getItem('username'));
+        let bodyClz = localStorage.getItem('bodyClz')
+        if(bodyClz != null){
+            body.className = bodyClz
+        }
+
+        btn.addEventListener('click',function(){
+            body.className = 'black';
+            localStorage.setItem('bodyClz','black')
+        })
+
+        // 引用类型(对象)的数据存取
+        let obj = {
+            name : '小明',
+            age : 19,
+            height: 190
+        }
+        
+        // 存引用类型时,需要先把对象转为 JSON 字符串
+        localStorage.setItem('obj',JSON.stringify(obj))
+
+        // 把  JSON 字符串 转为对象
+        let obj2 = JSON.parse(localStorage.getItem("obj"))
+        console.log(obj2);
+    </script>
+</body>
+</html>

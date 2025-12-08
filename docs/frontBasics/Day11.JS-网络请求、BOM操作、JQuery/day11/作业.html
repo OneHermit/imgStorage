@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 整个聊天窗口居中 */
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 处理 windows 的样式 */
+        .windows{
+            margin: 30px;
+            width: 400px;
+            height: 600px;
+            box-shadow: 0 0 15px #ccc;
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+        /* 标题处理 */
+        .title{
+            background-color: #3a65aa;
+            height: 50px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 600;
+        }
+        /* 中间的消息框 */
+        .content{
+            height: 500px;
+            width: 100%;
+            overflow: auto;
+            padding: 0 5px;
+        }
+        .rightMsg{
+            display: flex;
+            justify-content: right;
+        }
+        .right{
+            background-color: #3a65aa;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 8px;
+            border-bottom-right-radius: 0;
+            margin: 2px 0px;
+        }
+        .leftMsg{
+            display: flex;
+            justify-content: left;
+        }
+        .left{
+            background-color: #ec30c6;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 8px;
+            border-bottom-left-radius: 0;
+            margin: 2px 0px;
+        }
+        /* 脚部处理 */
+        .footer{
+            padding: 5px;
+            border-top: 1px solid #ccc;
+        }
+        .footer input{
+            height: 35px;
+            width: 85%;
+            border-radius: 18px;
+            padding-left: 15px;
+        }
+        .footer button{
+            background-color: #3a65aa;
+            color: white;
+            width: 14%;
+            height: 35px;
+            border-radius: 18px;
+            /* border: none; */
+        }
+    </style>
+</head>
+<body>
+    <div class="windows">
+        <div class="title">级简聊天窗口</div>
+        <div class="content">
+            <div class="leftMsg">
+                <div class="left">嘻嘻哈哈</div>
+            </div>
+            <div class="rightMsg">
+                <div class="right">123</div>
+            </div>
+        </div>
+        <div class="footer">
+            <input type="text" class="input" placeholder="输入消息...">
+            <button class="send">发送</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取标签对象
+        let content = document.querySelector('.content')
+        let input = document.querySelector('.input')
+        let send = document.querySelector('.send')
+
+
+        // 绑定事件
+        input.addEventListener('keydown',function(e){
+            console.dir(e);
+            if(e.key == 'Enter'){
+                reply()
+            }
+        })
+
+        send.addEventListener('click',function(){
+            reply()
+            message()
+        })
+
+        // 抽取回复消息的代码
+        function reply(){
+            if(input.value != ''){
+                let rightMsg = document.createElement('div')
+                rightMsg.className='rightMsg'
+                rightMsg.innerHTML = `<div class="right">${input.value}</div>`
+                content.appendChild(rightMsg)
+                input.value = '';
+            }
+        }
+
+        // 模拟聊天的用户来消息
+        function message(){
+            let leftMsg = document.createElement('div')
+            leftMsg.className='leftMsg'
+            leftMsg.innerHTML = '<div class="left">嘻嘻哈哈</div>'
+            content.appendChild(leftMsg)
+        }
+    </script>
+</body>
+</html>

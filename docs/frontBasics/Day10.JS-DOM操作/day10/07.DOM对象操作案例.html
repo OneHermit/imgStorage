@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 220px;
+            background-color: #ccc;
+        }
+        .item{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>运动器材</h1>
+    <input class="input" type="text">
+    <button class="add">添加</button>
+
+    <br><br>
+
+    <div class="content">
+        <div class="item">
+            <span>篮球</span>
+            <button class="del">删除</button>
+        </div>
+    </div>
+
+    <script>
+        let add = document.querySelector('.add')
+        let input = document.querySelector('.input')
+        let content = document.querySelector('.content')
+
+        add.addEventListener('click',function(){
+            console.log(input.value);
+            // <div class="item">
+            //     <span>篮球</span>
+            //     <button class="del">删除</button>
+            // </div>
+            let span = document.createElement('span')
+            let button = document.createElement('button')
+            let div = document.createElement('div')
+            span.innerText = input.value;
+            button.innerText = '删除'
+            button.className = 'del'
+            div.className = 'item'
+
+            div.appendChild(span)
+            div.appendChild(button)
+            content.appendChild(div)
+
+            input.value = ''
+        })
+
+        content.addEventListener('click',function(e){
+            if(e.target.matches('.del')){
+                e.target.parentNode.remove();
+            }
+        })
+    </script>
+</body>
+</html>

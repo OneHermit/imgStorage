@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <p class="my_p">hello world</p>
+    <a id="my_a" href="http://www.baidu.com">百度一下</a>
+
+    <script src="./js/my_juqery.js"></script>
+    <script>
+        // 使用 js 来操作css
+        // let h1 = document.querySelector('h1')
+        // h1.style.color = 'pink'
+
+        // let p = document.querySelector('.my_p')
+        // p.style.color = 'red'
+        console.log(window);
+        let h1 = $('h1')
+        let p = $('.my_p')
+        let a = $('#my_a')
+        // h1.style.color = 'red'
+        // p.style.color = 'pink'
+        // a.style.color = 'green'
+        $('h1').css('color','pink')
+        $('.my_p').css('color','red')
+    </script>
+</body>
+</html>

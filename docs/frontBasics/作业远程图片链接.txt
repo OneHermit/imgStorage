@@ -1,0 +1,25 @@
+所有的远程图片如果无法显示，在head 标签下加上以下标签即可。
+<meta name="referrer" content="no-referrer">
+
+day02 作业
+猴子：https://upload-images.jianshu.io/upload_images/9082898-de5a7f4d41fb87f5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+day02 视频：https://www.w3school.com.cn/i/movie.mp4
+day03 音频：https://www.w3school.com.cn/i/movie.ogg
+
+day04 作业
+head.jpg：https://upload-images.jianshu.io/upload_images/9082898-ac3f291c9524398c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+bg.jpg：https://upload-images.jianshu.io/upload_images/9082898-32cdadcc255ab739.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+suspend.png：https://upload-images.jianshu.io/upload_images/9082898-2633cb0cd1516d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+day06 作业图片
+耳机.png：https://upload-images.jianshu.io/upload_images/9082898-a6b39e272390d97c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+苹果手表.png：https://upload-images.jianshu.io/upload_images/9082898-5cf8b750fe703cc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+运动手表.png：https://upload-images.jianshu.io/upload_images/9082898-9df04ad17eb625cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+
+
+
+

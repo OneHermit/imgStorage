@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入 axios 库-->
+    <!-- <script src="./js/axios.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // axios({
+        //     url:'https://api.apiopen.top/api/getHaoKanVideo'
+        // }).then(function(response){
+        //     console.log(response.data.result.list);
+        // })
+        
+        // let box = document.querySelector('.box')
+        // // 请求网络上的数据,然后显示图片
+        // axios({
+        //     url:'https://api.apiopen.top/api/getHaoKanVideo'
+        // }).then((response) => {
+        //     let list = response.data.result.list
+        //     for(let i = 0; i < list.length; i++){
+        //         let obj = list[i]
+        //         let img = document.createElement("img")
+        //         img.src = obj.userPic
+        //         img.width = 100;
+        //         img.height = 100;
+
+        //         box.appendChild(img)
+        //         console.log(box);
+        //     }
+        // })
+
+        // 带请求方法以及参数
+         axios({
+            url:'https://api.apiopen.top/api/getHaoKanVideo',
+            method: 'get',
+            params: {
+                size : 20,
+                page : 4
+            }
+        }).then(function(response){
+            console.log(response.data.result.list);
+        }).catch(error =>{
+            console.log("错误消息" , error);
+        })
+
+    </script>
+</body>
+</html>

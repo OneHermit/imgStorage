@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu{
+            width: 200px;
+            height: 100vh;
+            background-color: pink;
+
+            position: fixed;
+            /* left: -200px; */
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">这是菜单</div>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <h1>hello world hello world hello world hello world</h1>
+    <script>
+        // 窗口大小变化事件
+        let menu = document.querySelector(".menu")
+        window.addEventListener('resize',function(){
+            console.log(window.innerWidth, window.innerHeight);
+            if(window.innerWidth <= 600){
+                menu.style.left = '-200px'
+            }else{
+                menu.style.left = '0px'
+            }
+        })
+
+        // 页面滚动事件
+        window.addEventListener('scroll',function(){
+            console.log('水平滚动距离:',window.screenX);
+            console.log('垂直滚动距离:',window.screenY);
+        })
+
+        // 鼠标的事件
+        document.addEventListener('mouseenter',function(){
+            console.log("鼠标移入");
+        })
+        document.addEventListener('mouseleave',function(){
+            console.log("鼠标移出");
+        })
+    </script>
+</body>
+</html>

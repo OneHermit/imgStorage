@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .head{
+            margin-top: 30px;
+        }
+        .menu{
+            /* background-color: pink; */
+            display: inline-block;
+            position: relative;
+            /* left: 30px;
+            top: 20px; */
+        }
+        .list{
+            position: absolute;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            width: 100%;
+            display: none;
+
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu:hover .list{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="head">
+        <div class="menu">中国大陆版
+            <div class="list">
+                <li>中国港澳版</li>
+                <li>中国台湾版</li>
+                <li>京东全球版</li>
+            </div>
+        </div>
+    </div>
+    <hr>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pink{
+            background-color: pink;
+        }
+        .black{
+            background-color: black;
+        }
+    </style>
+</head>
+<body class="pink">
+    <button class="btn">切换背景</button>
+
+    <script>
+        let body = document.querySelector('body')
+        // body.class = 'black'    // 错误的写法,class 是一个保留字,不能作为变量名
+        // body.className = 'black'   // 直接替换了class 的值
+        // body.classList.add('pink3')
+        // body.classList.remove('pink2')
+        // body.classList.replace('pink','black')
+        // body.classList.toggle('black')  // 切换值
+
+        let btn = document.querySelector("button")
+        btn.addEventListener('click',function(){
+            body.className = 'black'
+        })
+    </script>
+</body>
+</html>
